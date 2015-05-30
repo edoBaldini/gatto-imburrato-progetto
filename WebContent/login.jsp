@@ -31,20 +31,33 @@
       <div class="modal-body">
           <form class="form col-md-12 center-block">
             <div class="form-group">
-              <input type="text" class="form-control input-lg" placeholder="Email">
+            <f:view>
+            <h:form>
+					<p>Email <h:inputText value="#{customerController.email}" 
+                     required="true"
+                     requiredMessage="Email is mandatory"
+                     id="email"/> <h:message for="email" />  </p>
+              </h:form>          
             </div>
             <div class="form-group">
-              <input type="password" class="form-control input-lg" placeholder="Password">
+              <h:form>
+					Password<h:inputText value="#{customerController.password}" 
+                     required="true"
+                     requiredMessage="Email is mandatory"
+                     id="password"/> <h:message for="password"  />  
+              </h:form> 
             </div>
             <div class="form-group">
+            
               <button class="btn btn-primary btn-lg btn-block">Sign In</button>
-              <span class="pull-right"><a href="#">Register</a></span><span><a href="#">Need help?</a></span>
+              <span class="pull-right"><a href="#">Register</a>
             </div>
           </form>
       </div>
       <div class="modal-footer">
           <div class="col-md-12">
-          <h:commandButton class="btn" data-dismiss="modal" aria-hidden="true" value="Cancel" action="index.jsp" />
+          <h:commandButton styleClass="btn"  value="Cancel" action="index.jsp" />
+          </f:view>
 		  </div>	
       </div>
   </div>
