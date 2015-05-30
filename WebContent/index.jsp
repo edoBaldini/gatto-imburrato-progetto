@@ -13,7 +13,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>SIW-JEE-ES2</title>
+<title>Gatto Imburrato</title>
 
 <link href="resources/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
@@ -29,7 +29,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-</head>
+
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -45,11 +45,12 @@
         <div id="navbar" class="collapse navbar-collapse">
         <f:view>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href='<c:url value="/faces/index.jsp" />'>Home</a></li>
             <li><a href='<c:url value="/faces/newProduct.jsp" />'>Insert a new product</a></li>
             <li><h:form>
 					<h:commandLink styleClass="c-link" action="#{productController.listProducts}" value="List all Products" />
 				</h:form></li>
+			<li><a href='<c:url value="/faces/login.jsp" />'>login</a></li>
           </ul>
           </f:view>
         </div><!--/.nav-collapse -->

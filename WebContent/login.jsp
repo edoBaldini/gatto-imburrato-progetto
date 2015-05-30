@@ -7,18 +7,14 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<meta name="description" content="">
-<meta name="author" content="">
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>Gatto Imburrato</title>
 
 <link href="resources/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
 <link href="resources/css/custom.css" rel="stylesheet">
-
 <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 </head>
 
@@ -29,29 +25,26 @@
   <div class="modal-dialog">
   <div class="modal-content">
       <div class="modal-header">
-          <h1 class="text-center">${productController.product.name}</h1>
-          <h2>Details</h2>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h1 class="text-center">Login</h1>
       </div>
       <div class="modal-body">
           <form class="form col-md-12 center-block">
             <div class="form-group">
-              Code: ${productController.product.code}
+              <input type="text" class="form-control input-lg" placeholder="Email">
             </div>
             <div class="form-group">
-              Price: ${productController.product.price}
+              <input type="password" class="form-control input-lg" placeholder="Password">
             </div>
             <div class="form-group">
-              Description: ${productController.product.description}
+              <button class="btn btn-primary btn-lg btn-block">Sign In</button>
+              <span class="pull-right"><a href="#">Register</a></span><span><a href="#">Need help?</a></span>
             </div>
           </form>
       </div>
       <div class="modal-footer">
           <div class="col-md-12">
-          <f:view>
-          <h:form styleClass="form-active">
-					<h:commandButton styleClass="btn"  value="Torna" action="#{productController.listProducts}"  />
-		  </h:form>
-		  </f:view>
+          <h:commandButton class="btn" data-dismiss="modal" aria-hidden="true" value="Cancel" action="index.jsp" />
 		  </div>	
       </div>
   </div>
