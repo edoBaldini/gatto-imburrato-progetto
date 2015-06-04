@@ -50,7 +50,7 @@
             <li><h:form>
 					<h:commandLink styleClass="c-link" action="#{productController.listProducts}" value="List all Products" />
 				</h:form></li>
-			<li><a href='<c:url value="/faces/login.xhtml" />'>login</a></li>
+			<li><a href='<c:url value="/faces/login.jsp" />'>login</a></li>
           </ul>
           </f:view>
         </div><!--/.nav-collapse -->

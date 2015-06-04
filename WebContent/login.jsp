@@ -33,18 +33,18 @@
             <div class="form-group">
             <f:view>
             <h:form>
-					<p>Email <h:inputText value="#{customerController.email}" 
+					<center><p>Email <h:inputText value="#{customerController.email}" 
                      required="true"
                      requiredMessage="Email is mandatory"
-                     id="email"/> <h:message for="email" />  </p>
+                     id="email"/> <h:message for="email" />  </p></center>
               </h:form>          
             </div>
             <div class="form-group">
               <h:form>
-					Password<h:inputText value="#{customerController.password}" 
+					<center><p>Pass  <h:inputSecret value="#{customerController.password}" 
                      required="true"
                      requiredMessage="Email is mandatory"
-                     id="password"/> <h:message for="password"  />  
+                     id="password"/> <h:message for="password"  />   </p> </center>
               </h:form> 
             </div>
             <div class="form-group">
@@ -56,7 +56,9 @@
       </div>
       <div class="modal-footer">
           <div class="col-md-12">
-          <h:commandButton styleClass="btn"  value="Cancel" action="index.jsp" />
+          <h:form>
+          <h:commandButton styleClass="btn"  value="Cancel" action="index.html" />
+          </h:form>
           </f:view>
 		  </div>	
       </div>
