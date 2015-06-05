@@ -12,7 +12,7 @@ import it.uniroma3.model.Customer;
 import it.uniroma3.model.CustomerFacade;
 
 @ManagedBean
-@SessionScoped
+
 public class CustomerController {
 	
 	@ManagedProperty("#{param.id}")
@@ -109,6 +109,14 @@ public class CustomerController {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public Customer getCustomer(){
+		return customer;
+	}
+	
+	public void setCustomer(Customer customer){
+		this.customer = customer;
 	}
 	
 	public String loginCustomer(){

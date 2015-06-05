@@ -6,7 +6,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
 
 
@@ -33,12 +33,11 @@ public class CustomerFacade {
 	}
 	
 	public Customer getCustomer(String email, String password){
-		/*TypedQuery<Customer> c=em.createNamedQuery("check-emaill",Customer.class);
+		TypedQuery<Customer> c=em.createNamedQuery("check-emaill",Customer.class);
 		c.setParameter("email", email);
 		List<Customer> customer= c.getResultList();
-		return customer.get(0);*/
-		Customer c = new Customer ("daniele", "bertillo", "db@.it", "000033333", new Date(), new Date(), "111");
-		return c;		
+		return customer.get(0);
+				
 	}
 	
 	
