@@ -31,39 +31,51 @@
 </head>
 
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Gatto-Imburrato-commerce</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-        <f:view>
-          <ul class="nav navbar-nav">
-            <li class="active"><a href='<c:url value="/faces/index.jsp" />'>Home</a></li>
-            <li><a href='<c:url value="/faces/newProduct.jsp" />'>Insert a new product</a></li>
-            <li><h:form>
-					<h:commandLink styleClass="c-link" action="#{productController.listProducts}" value="List all Products" />
-				</h:form></li>
-			<li><a href='<c:url value="/faces/login.jsp" />'>login</a></li>
-          </ul>
-          </f:view>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav> <br /> <br />
-    <img src="resources/images/index-img.gif" width="100%">
-<!-- Bootstrap core JavaScript
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Gatto-Imburrato-commerce</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<f:view>
+					<ul class="nav navbar-nav">
+						<li class="active"><a
+							href='<c:url value="/faces/index.jsp" />'>Home</a></li>
+						<li><a href='<c:url value="/faces/newProduct.jsp" />'>Insert
+								a new product</a></li>
+						<li><h:form>
+								<h:commandLink styleClass="c-link"
+									action="#{productController.listProducts}"
+									value="List all Products" />
+							</h:form></li>
+						
+							<li><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
+					
+
+					</ul>
+				</f:view>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+	<br />
+	<br />
+	<img src="resources/images/index-img.gif" width="100%">
+	<!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="resources/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
 </html>
 

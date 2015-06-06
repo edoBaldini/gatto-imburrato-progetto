@@ -11,7 +11,7 @@ import javax.faces.bean.SessionScoped;
 import it.uniroma3.model.Customer;
 import it.uniroma3.model.CustomerFacade;
 
-@ManagedBean
+@ManagedBean (name = "customerController")
 
 public class CustomerController {
 	
@@ -120,10 +120,13 @@ public class CustomerController {
 	}
 	
 	public String loginCustomer(){
+		try{
 		this.customer = customerFacade.getCustomer(email, password);
+		this.customer.setLogin(true);
 		return "customer";
+		}catch(Exception e){
+			return "login";
+		}
+		
 	}
-	
-	
-
 }

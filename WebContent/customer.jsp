@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
 	pageEncoding="US-ASCII"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
@@ -31,39 +32,60 @@
 </head>
 
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Gatto-Imburrato-commerce</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-        <f:view>
-          <ul class="nav navbar-nav">
-            <li><a href='<c:url value="/faces/index.jsp" />'>Home</a></li>
-            <li><a href='<c:url value="/faces/newProduct.jsp" />'>Insert a new product</a></li>
-            <li><h:form>
-					<h:commandLink styleClass="c-link" action="#{productController.listProducts}" value="List all Products" />
-				</h:form></li>
-			<li><a href='<c:url value="/faces/login.jsp" />'>login</a></li>
-          </ul>
-          
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav> <br /> <br />
-<h1>${customerController.customer.firstname}</h1>
-<h2>Details</h2>
-<div>Last Name: ${customerController.customer.lastname}</div>
-<div>Email: ${customerController.customer.email}</div>
-</f:view>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="resources/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Gatto-Imburrato-commerce</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<f:view>
+					<ul class="nav navbar-nav">
+						<li><a href='<c:url value="/faces/index.jsp" />'>Home</a></li>
+						<li><a href='<c:url value="/faces/newProduct.jsp" />'>Insert
+								a new product</a></li>
+						<li><h:form>
+								<h:commandLink styleClass="c-link" action="#{productController.listProducts}" value="List all Products" />
+							</h:form></li>
+							<c:if test="${customerController == null}">
+						<li><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
+						</c:if>
+					</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+	
+	<h:form>
+	<br />
+	<br /><br />
+	<br />
+    <form class="form col-md-12 center-block">
+            <div class="form-group">
+              Code: ${customerController.customer.email}
+            </div>
+            <div class="form-group">
+              Price: ${customerController.customer.password}
+            </div>
+            
+          </form>
+                     
+	</div>
+	</h:form>
+		</f:view>
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>

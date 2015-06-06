@@ -33,8 +33,9 @@ public class CustomerFacade {
 	}
 	
 	public Customer getCustomer(String email, String password){
-		TypedQuery<Customer> c=em.createNamedQuery("check-emaill",Customer.class);
+		TypedQuery<Customer> c=em.createNamedQuery("check-email",Customer.class);
 		c.setParameter("email", email);
+		c.setParameter("password", password);
 		List<Customer> customer= c.getResultList();
 		return customer.get(0);
 				

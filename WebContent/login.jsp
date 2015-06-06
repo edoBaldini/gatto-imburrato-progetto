@@ -53,13 +53,15 @@
     <div class="container">
     
 <h:form>
-    <div>Email: <h:inputText value="#{customerController.email}" 
+    <div>Email: <h:inputText value="#{customerController.email }"
                      required="true"
-                     id="email"/> 
+                     requiredMessage="Email is mandatory"
+                     id="email"/> <h:message for="email"/>
 	</div>
-    <div>Password: <h:inputSecret value="#{customerController.password}" 
+    <div>Password: <h:inputSecret value="#{customerController.password }"
                      required="true"
-                     id="password"/> 
+                     requiredMessage="Password is mandatory"
+                     id="password"/> <h:message for="password" />
 	</div>
     
 	<div>

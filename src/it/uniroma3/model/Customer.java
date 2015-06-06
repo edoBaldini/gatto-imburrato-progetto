@@ -17,8 +17,8 @@ import javax.persistence.OneToOne;
 
 @Entity
 
-@NamedQuery(name="check-emaill",
-			query="SELECT c FROM Customer c WHERE c.email = :email")
+@NamedQuery(name="check-email",
+			query="SELECT c FROM Customer c WHERE c.email = :email AND c.password = :password")
 
 public class Customer {
 
@@ -35,6 +35,8 @@ public class Customer {
 	private Date dateofbirth;
 	private Date registerdate;
 	private String password;
+	
+	private boolean login;
 
 	@OneToOne(cascade={CascadeType.PERSIST})
 	private Address address_id;
@@ -122,5 +124,11 @@ public class Customer {
 		return sb.toString();
 
 
+	}
+	public boolean isLogin() {
+		return login;
+	}
+	public void setLogin(boolean login) {
+		this.login = login;
 	}
 }
