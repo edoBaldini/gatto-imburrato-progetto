@@ -44,9 +44,9 @@
             <li><h:form>
 					<h:commandLink styleClass="c-link" action="#{productController.listProducts}" value="List all Products" />
 				</h:form></li>
-			<c:if test="${customerController == null}">
+			
 			<li class="active"><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
-			</c:if>
+
           </ul>
        
         </div><!--/.nav-collapse -->
