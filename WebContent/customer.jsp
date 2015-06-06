@@ -53,7 +53,7 @@
 						<li><h:form>
 								<h:commandLink styleClass="c-link" action="#{productController.listProducts}" value="List all Products" />
 							</h:form></li>
-							<c:if test="${customerController == null}">
+							<c:if test="${customerController.customer.email == customerController.email}">
 						<li><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
 						</c:if>
 					</ul>
@@ -68,12 +68,12 @@
 	<br />
     <form class="form col-md-12 center-block">
             <div class="form-group">
-              Code: ${customerController.customer.email}
+              Email: ${customerController.customer.email}
             </div>
             <div class="form-group">
-              Price: ${customerController.customer.password}
+              Password: ${customerController.customer.password}
             </div>
-            
+           <li><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
           </form>
                      
 	</div>

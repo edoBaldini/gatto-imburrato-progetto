@@ -44,7 +44,9 @@
             <li><h:form>
 					<h:commandLink styleClass="c-link" action="#{productController.listProducts}" value="List all Products" />
 				</h:form></li>
+			<c:if test="${customerController == null}">
 			<li class="active"><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
+			</c:if>
           </ul>
        
         </div><!--/.nav-collapse -->
@@ -53,12 +55,12 @@
     <div class="container">
     
 <h:form>
-    <div>Email: <h:inputText value="#{customerController.email }"
+    <div>Email: <h:inputText value="#{customerController.email}"
                      required="true"
                      requiredMessage="Email is mandatory"
                      id="email"/> <h:message for="email"/>
 	</div>
-    <div>Password: <h:inputSecret value="#{customerController.password }"
+    <div>Password: <h:inputSecret value="#{customerController.password}"
                      required="true"
                      requiredMessage="Password is mandatory"
                      id="password"/> <h:message for="password" />

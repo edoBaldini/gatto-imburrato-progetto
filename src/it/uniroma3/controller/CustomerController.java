@@ -11,11 +11,11 @@ import javax.faces.bean.SessionScoped;
 import it.uniroma3.model.Customer;
 import it.uniroma3.model.CustomerFacade;
 
-@ManagedBean (name = "customerController")
+@ManagedBean(name = "customerController")
+@SessionScoped
+public class CustomerController{
 
-public class CustomerController {
 	
-	@ManagedProperty("#{param.id}")
 	private Long id;
 	
 	private String firstname;

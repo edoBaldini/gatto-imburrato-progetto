@@ -55,10 +55,9 @@
 									action="#{productController.listProducts}"
 									value="List all Products" />
 							</h:form></li>
-						
+							<c:if test="${customerController.customer.email == null}" >
 							<li><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
-					
-
+							</c:if>
 					</ul>
 				</f:view>
 			</div>
