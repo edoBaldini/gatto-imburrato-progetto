@@ -4,15 +4,19 @@ package it.uniroma3.model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
 import javax.persistence.Column;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -36,12 +40,17 @@ public class Customer {
 	private Date registerdate;
 	private String password;
 	
-	private boolean login;
-
 	@OneToOne(cascade={CascadeType.PERSIST})
-	private Address address_id;
-
-	public Customer (){};
+	private Address address;
+	
+	@OneToMany(mappedBy="customer")
+	@JoinColumn(name="customer_id")
+	private List<Order> orders;
+	
+	public Customer(){
+		this.orders = new ArrayList<Order> ();
+	}
+	
 	public Customer(String firstname, String lastname, String email,
 			String phonenumber, Date dateofbirth,Date registerdata,String password) {
 		this.firstname = firstname;
@@ -51,6 +60,7 @@ public class Customer {
 		this.dateofbirth = dateofbirth;
 		this.registerdate=registerdata;
 		this.password =  password;
+		this.orders = new ArrayList<Order>();
 	}
 
 	public String getFirstname() {
@@ -89,11 +99,11 @@ public class Customer {
 	public void setRegisterdate(Date registerdate) {
 		this.registerdate = registerdate;
 	}
-	public Address getAddress_id() {
-		return address_id;
+	public Address getAddress() {
+		return address;
 	}
-	public void setAddress_id(Address address_id) {
-		this.address_id = address_id;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 
@@ -105,7 +115,17 @@ public class Customer {
 	}
 
 	public int hashCode() {
-		return this.firstname.hashCode() + this.lastname.hashCode() + this.address_id.hashCode(); 
+		return this.firstname.hashCode() + this.lastname.hashCode() + this.address.hashCode(); 
+	}
+	
+	public List<Order> getOrders() {
+		return orders;
+	}
+	public void setOrders(Order orders) {
+		this.orders.add(orders);
+	}
+	public String getId() {
+		return id;
 	}
 
 	public String toString(){
@@ -118,17 +138,12 @@ public class Customer {
 		sb.append(", phonenumber='").append(phonenumber);
 		sb.append(", dateofbirth='").append(dateofbirth);
 		sb.append(", registerdate='").append(registerdate);
-		sb.append(", address_id='").append(address_id);
+		sb.append(", address_id='").append(address);
 		sb.append(", password='").append(password);
 		sb.append("}\n");
 		return sb.toString();
 
 
 	}
-	public boolean isLogin() {
-		return login;
-	}
-	public void setLogin(boolean login) {
-		this.login = login;
-	}
+	
 }

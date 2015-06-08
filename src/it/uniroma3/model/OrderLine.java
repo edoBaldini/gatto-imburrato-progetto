@@ -5,11 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Column;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "order_line")
 public class OrderLine {
 
 	@Id
@@ -19,8 +22,12 @@ public class OrderLine {
 	@Column(nullable=false)
 	private Float unitPrice;
 	private Integer quantity;
+	
 	@OneToOne
 	private Product product;
+	
+	@ManyToOne
+	private Order order;
 
 	public OrderLine(){}
 
@@ -62,6 +69,14 @@ public class OrderLine {
 		OrderLine orderLine= (OrderLine)obj;
 		return this.getQuantity()==orderLine.getQuantity() && this.getUnitPrice()==orderLine.getUnitPrice();
 	}
+	
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
 
 	public int hashCode(){
 		return this.quantity.hashCode()+this.unitPrice.hashCode();
@@ -76,6 +91,8 @@ public class OrderLine {
 		sb.append("}\n");
 		return sb.toString();
 	}
+
+
 }
 
 

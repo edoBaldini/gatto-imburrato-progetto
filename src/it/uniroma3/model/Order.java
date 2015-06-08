@@ -14,11 +14,18 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Column;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 @Entity
-public class Orders {
+@Table(name = "orders")
+@NamedQuery(name="all-orders-customer",
+query="SELECT o FROM Orders o WHERE o.customer = :id")
+
+
+public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -32,15 +39,15 @@ public class Orders {
 	
 	@OneToMany(fetch=FetchType.EAGER, cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	@JoinColumn(name="orders_id")
-	private List<OrderLine> orderLine;
+	private List<OrderLine> orderLines;
 	
-	public Orders(){
-		this.orderLine=new ArrayList<OrderLine>();
+	public Order(){
+		this.orderLines=new ArrayList<OrderLine>();
 	}
-	public Orders(Date creationTime, Customer costumer){
+	public Order(Date creationTime, Customer costumer){
 		this.creationTime=creationTime;
 		this.customer=costumer;
-		this.orderLine=new ArrayList<OrderLine>();
+		this.orderLines=new ArrayList<OrderLine>();
 	}
 	public Date getCreationTime() {
 		return creationTime;
@@ -55,17 +62,17 @@ public class Orders {
 		this.customer = costumer;
 	}
 	public List<OrderLine> getOrderLine() {
-		return orderLine;
+		return orderLines;
 	}
 	public void setOrderLine(OrderLine orderLine) {
-		this.orderLine.add( orderLine);
+		this.orderLines.add( orderLine);
 	}
 	public Long getId() {
 		return id;
 	}
 	
 	public boolean equals(Object obj){
-		Orders order=(Orders)obj;
+		Order order=(Order)obj;
 		return this.getCustomer().equals(customer) && order.getCreationTime().equals(order.getCreationTime());
 	}
 	
@@ -79,7 +86,7 @@ public class Orders {
         sb.append("{id=").append(id); 
         sb.append(", costumer='").append(customer); 
         sb.append(", creationTime=").append(creationTime); 
-        sb.append(", orderLine='").append(orderLine); 
+        sb.append(", orderLine='").append(orderLines); 
         sb.append("}\n");
         return sb.toString();
 	}

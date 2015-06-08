@@ -1,9 +1,12 @@
 package it.uniroma3.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.Column;
 
@@ -20,9 +23,11 @@ import javax.persistence.Column;
 
 	private Float price;
 	@Column(length = 2000)
-
 	private String description;
-
+	
+	@ManyToMany(mappedBy = "product")
+	private List<Provider> providers;
+	
 	@Column(nullable = false)
 	private String code;
 	
@@ -85,6 +90,14 @@ import javax.persistence.Column;
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public List<Provider> getProviders() {
+		return providers;
+	}
+
+	public void setProviders(List<Provider> providers) {
+		this.providers = providers;
 	}
 	
 }

@@ -31,56 +31,71 @@
 </head>
 
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Gatto-Imburrato-commerce</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-        <f:view>
-          <ul class="nav navbar-nav">
-            <li ><a href='<c:url value="/faces/index.jsp" />'>Home</a></li>
-            <li><a href='<c:url value="/faces/newProduct.jsp" />'>Insert a new product</a></li>
-            <li><h:form styleClass="form-active">
-					<h:commandLink styleClass="c-link-active" action="#{productController.listProducts}" value="List all Products" />
-				</h:form></li>
-			<li><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
-          </ul>
-          
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav> <br /> <br />
-   <div class="container">
-  <h1>Products</h1>
-<h:form>
-<table>
-	<tr>
-		<th>Name</th><th>Price</th>
-	</tr>
-	<c:forEach var="product" items="#{productController.products}">
-		<tr><td>
-		<h:commandLink action="#{productController.findProduct}" value="#{product.name}">
-			<f:param name="id" value="#{product.id}" />
-		</h:commandLink>
-		</td><td>${product.price}</td></tr>
-	</c:forEach>
-</table>
-</h:form>
-</f:view>
-</div>
-<!-- Bootstrap core JavaScript
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Gatto-Imburrato-commerce</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<f:view>
+					<ul class="nav navbar-nav">
+						<li><a href='<c:url value="/faces/index.jsp" />'>Home</a></li>
+						<li><a href='<c:url value="/faces/newProduct.jsp" />'>Insert
+								a new product</a></li>
+						<li><h:form styleClass="form-active">
+								<h:commandLink styleClass="c-link-active"
+									action="#{productController.listProducts}"
+									value="List all Products" />
+							</h:form></li>
+						<c:if test="${customerController.customer.email == null}">
+							<li><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
+						</c:if>
+						<c:if test="${customerController.customer.email != null}">
+							<li><a href='<c:url value="/faces/customer.jsp" />'>${customerController.customer.firstname}</a></li>
+						</c:if>
+					</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+	<br />
+	<br />
+	<div class="container">
+		<h1>Products</h1>
+		<h:form>
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>Price</th>
+				</tr>
+				<c:forEach var="product" items="#{productController.products}">
+					<tr>
+						<td><h:commandLink action="#{productController.findProduct}"
+								value="#{product.name}">
+								<f:param name="id" value="#{product.id}" />
+							</h:commandLink></td>
+						<td>${product.price}</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</h:form>
+		</f:view>
+	</div>
+	<!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="resources/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
 </html>
 

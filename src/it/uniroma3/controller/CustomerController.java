@@ -8,8 +8,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
+import it.uniroma3.model.Address;
 import it.uniroma3.model.Customer;
 import it.uniroma3.model.CustomerFacade;
+import it.uniroma3.model.Order;
 
 @ManagedBean(name = "customerController")
 @SessionScoped
@@ -26,6 +28,8 @@ public class CustomerController{
 	private Date dateofbirth;
 	private Date registerdata;
 	private Customer customer;
+	private Address address;
+	private List<Order> orders;
 	private List<Customer> customers;
 	
 	@EJB()
@@ -122,11 +126,28 @@ public class CustomerController{
 	public String loginCustomer(){
 		try{
 		this.customer = customerFacade.getCustomer(email, password);
-		this.customer.setLogin(true);
 		return "customer";
 		}catch(Exception e){
 			return "login";
 		}
 		
 	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(Order order) {
+		this.orders.add(order);
+	}
+	
+
 }

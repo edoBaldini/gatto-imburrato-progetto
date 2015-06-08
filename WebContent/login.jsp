@@ -45,7 +45,12 @@
 					<h:commandLink styleClass="c-link" action="#{productController.listProducts}" value="List all Products" />
 				</h:form></li>
 			
-			<li class="active"><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
+			<c:if test="${customerController.customer.email == null}" >
+							<li class="active"><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
+							</c:if>
+							<c:if test="${customerController.customer.email != null}">
+							<li><a href='<c:url value="/faces/customer.jsp" />'>${customerController.customer.firstname}</a></li>
+						</c:if>
 
           </ul>
        

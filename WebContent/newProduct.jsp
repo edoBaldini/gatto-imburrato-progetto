@@ -25,70 +25,89 @@
 </head>
 
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Gatto-Imburrato-commerce</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-        <f:view>
-          <ul class="nav navbar-nav">
-            <li ><a href='<c:url value="/faces/index.jsp" />'>Home</a></li>
-            <li class="active"><a href='<c:url value="/faces/newProduct.jsp" />'>Insert a new product</a></li>
-            <li><h:form>
-					<h:commandLink styleClass="c-link" action="#{productController.listProducts}" value="List all Products" />
-				</h:form></li>
-			<li><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
-          </ul>
-       
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav> <br /> <br /><br /> <br />
-    <div class="container">
-    
-<h:form>
-    <div>Name: <h:inputText value="#{productController.name}" 
-                     required="true"
-                     requiredMessage="Name is mandatory"
-                     id="name"/> <h:message for="name" />
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Gatto-Imburrato-commerce</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<f:view>
+					<ul class="nav navbar-nav">
+						<li><a href='<c:url value="/faces/index.jsp" />'>Home</a></li>
+						<li class="active"><a
+							href='<c:url value="/faces/newProduct.jsp" />'>Insert a new
+								product</a></li>
+						<li><h:form>
+								<h:commandLink styleClass="c-link"
+									action="#{productController.listProducts}"
+									value="List all Products" />
+							</h:form></li>
+						<c:if test="${customerController.customer.email == null}">
+							<li><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
+						</c:if>
+						<c:if test="${customerController.customer.email != null}">
+							<li><a href='<c:url value="/faces/customer.jsp" />'>${customerController.customer.firstname}</a></li>
+						</c:if>
+					</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+	<br />
+	<br />
+	<br />
+	<br />
+	<div class="container">
+
+		<h:form>
+			<div>
+				Name:
+				<h:inputText value="#{productController.name}" required="true"
+					requiredMessage="Name is mandatory" id="name" />
+				<h:message for="name" />
+			</div>
+			<div>
+				Code:
+				<h:inputText value="#{productController.code}" required="true"
+					requiredMessage="Code is mandatory" id="code" />
+				<h:message for="code" />
+			</div>
+			<div>
+				Price:
+				<h:inputText value="#{productController.price}" required="true"
+					requiredMessage="Price is mandatory"
+					converterMessage="Price must be a number" id="price" />
+				<h:message for="price" />
+			</div>
+			<div>
+				Description:
+				<h:inputTextarea value="#{productController.description}"
+					required="false" cols="20" rows="5" />
+
+			</div>
+			<div>
+				<h:commandButton value="Submit"
+					action="#{productController.createProduct}" />
+			</div>
+			<h:commandLink action="#{productController.listProducts}"
+				value="List all Products" />
+		</h:form>
+		</f:view>
 	</div>
-    <div>Code: <h:inputText value="#{productController.code}" 
-                     required="true"
-                     requiredMessage="Code is mandatory"
-                     id="code"/> <h:message for="code" />
-	</div>
-    <div>Price: <h:inputText value="#{productController.price}" 
-                     required="true"
-                     requiredMessage="Price is mandatory"
-                     converterMessage="Price must be a number"
-                     id="price"/> <h:message for="price" />
-	</div>
-    <div>Description: <h:inputTextarea value="#{productController.description}" 
-    				required="false" 
-    				cols="20" 
-    				rows="5" /> 
-                     
-	</div>
-	<div>
-		<h:commandButton value="Submit"  action="#{productController.createProduct}"/>
-	</div>
-	<h:commandLink action="#{productController.listProducts}"
-						value="List all Products" />
-</h:form>
-</f:view>
-    </div>
-<!-- Bootstrap core JavaScript
+	<!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="resources/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
 </html>

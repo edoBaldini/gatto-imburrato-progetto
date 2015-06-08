@@ -58,6 +58,9 @@
 							<c:if test="${customerController.customer.email == null}" >
 							<li><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
 							</c:if>
+							<c:if test="${customerController.customer.email != null}">
+							<li><a href='<c:url value="/faces/customer.jsp" />'>${customerController.customer.firstname}</a></li>
+						</c:if>
 					</ul>
 				</f:view>
 			</div>

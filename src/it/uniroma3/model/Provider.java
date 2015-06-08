@@ -28,13 +28,13 @@ public class Provider {
 	private String vatin;
 	
 	@ManyToMany
-	private List<Product> product;
+	private List<Product> products;
 	
 	@OneToOne(cascade={CascadeType.PERSIST})
 	private Address address;
 	
 	public Provider(){
-		this.product=new ArrayList<Product>();
+		this.products=new ArrayList<Product>();
 	}
 	
 	public Provider(String name, String phoneNumber, String email, String vatin, Address address){
@@ -42,7 +42,7 @@ public class Provider {
 		this.phoneNumber=phoneNumber;
 		this.email=email;
 		this.vatin=vatin;
-		this.product=new ArrayList<Product>();
+		this.products=new ArrayList<Product>();
 		this.address=address;
 	}
 
@@ -82,12 +82,12 @@ public class Provider {
 		return id;
 	}
 	
-	public List<Product> getProduct() {
-		return product;
+	public List<Product> getProducts() {
+		return products;
 	}
 
-	public void setProduct(Product product) {
-		this.product.add(product);
+	public void setProducts(Product product) {
+		this.products.add(product);
 	}
 	
 	public Address getAddress() {
@@ -115,7 +115,7 @@ public class Provider {
         sb.append(", phoneNumber=").append(phoneNumber); 
         sb.append(", email='").append(email); 
         sb.append(", vatin='").append(vatin);
-        sb.append(", product='").append(product);
+        sb.append(", product='").append(products);
         sb.append(", address='").append(address);
         sb.append("}\n");
         return sb.toString();

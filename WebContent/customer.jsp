@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
 	pageEncoding="US-ASCII"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
@@ -51,34 +50,43 @@
 						<li><a href='<c:url value="/faces/newProduct.jsp" />'>Insert
 								a new product</a></li>
 						<li><h:form>
-								<h:commandLink styleClass="c-link" action="#{productController.listProducts}" value="List all Products" />
+								<h:commandLink styleClass="c-link"
+									action="#{productController.listProducts}"
+									value="List all Products" />
 							</h:form></li>
-							<c:if test="${customerController.customer.email == null}">
-						<li><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
+						<c:if test="${customerController.customer.email == null}" >
+							<li><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
+							</c:if>
+							<c:if test="${customerController.customer.email != null}">
+							<li class="active"><a href='<c:url value="/faces/customer.jsp" />'>${customerController.customer.firstname}</a></li>
 						</c:if>
+
 					</ul>
 			</div>
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
-	
+
 	<h:form>
-	<br />
-	<br /><br />
-	<br />
-    <form class="form col-md-12 center-block">
-            <div class="form-group">
-              Email: ${customerController.customer.email}
-            </div>
-            <div class="form-group">
-              Password: ${customerController.customer.password}
-            </div>
-           <li><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
-          </form>
-                     
-	</div>
+		<br />
+		<br />
+		<br />
+		<br />
+		<form class="form col-md-12 center-block">
+			<div class="form-group">Email:
+				${customerController.customer.email}</div>
+			<div class="form-group">Password:
+				${customerController.customer.password}</div>
+			<div class="form-group">Address:
+				${customerController.customer.address.city}</div>
+								
+			<h:commandLink action="#{orderController.listOrders}" value="Ordini" />
+			
+		</form>
+
+		</div>
 	</h:form>
-		</f:view>
+	</f:view>
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
