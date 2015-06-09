@@ -88,20 +88,9 @@
 	</div>
 	</h:form>
 	<div class="container">
-		<h:form>
-			<h:commandLink styleClass="c-link"
-				action="#{orderController.listOrders}" value="List all Orders" />
-		</h:form>
 
-		<h:form>
-			<h:commandLink
-				action="#{orderController.listOrders}" value="List all Orders" />
-				<f:param name = "id" value = "#{customerController.customer.id}" />
-		</h:form>
+		<a href='<c:url value="/faces/orders.jsp" />'>List of Orders</a>		
 		
-		<c:if test="${customerController.customer.orders == null}">
-							<li>Hello Orders Customer</li>
-						</c:if>		
 	</div>
 	</f:view>
 	<!-- Bootstrap core JavaScript

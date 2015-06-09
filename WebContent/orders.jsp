@@ -64,12 +64,11 @@
 				<tr>
 					<th>ID</th>
 				</tr>
-				<c:forEach var="order" items="#{orderController.orders}">
+				<c:forEach var="order" items="#{customerController.customer.orders}">
 					<tr>
-						<td><h:commandLink action="#{orderController.findOrder}"
-								value="#{order.id}">
-								<f:param name="id" value="#{order.id}" />
-							</h:commandLink></td>
+						<td><h:commandLink action="#{order.orderLines}"
+								value="#{order.id}" />
+						</td>
 					</tr>
 				</c:forEach>
 			</table>

@@ -15,7 +15,7 @@ import javax.faces.bean.ManagedProperty;
 @ManagedBean
 public class OrderController {
 	
-	@ManagedProperty(value="#{param.id}")
+	//@ManagedProperty(value="#{param.id}")
 	private Long id;
 	private Date creationTime;
 	private Customer customer;

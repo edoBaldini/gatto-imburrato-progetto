@@ -49,7 +49,6 @@ public class CustomerFacade {
 		return customers;
 	}
 	
-	
 	public void updateCustomer(Customer customer){
 		em.merge(customer);
 	}

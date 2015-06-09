@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Column;
@@ -27,6 +28,7 @@ public class OrderLine {
 	private Product product;
 	
 	@ManyToOne
+	@JoinColumn(name = "orders_id")
 	private Order order;
 
 	public OrderLine(){}

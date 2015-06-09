@@ -123,16 +123,6 @@ public class CustomerController{
 		this.customer = customer;
 	}
 	
-	public String loginCustomer(){
-		try{
-		this.customer = customerFacade.getCustomer(email, password);
-		return "customer";
-		}catch(Exception e){
-			return "login";
-		}
-		
-	}
-
 	public Address getAddress() {
 		return address;
 	}
@@ -148,6 +138,18 @@ public class CustomerController{
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
+	public String loginCustomer(){
+		try{
+		this.customer = customerFacade.getCustomer(email, password);
+		return "customer";
+		}catch(Exception e){
+			return "login";
+		}
+		
+	}
+
+
+
 	
 
 }

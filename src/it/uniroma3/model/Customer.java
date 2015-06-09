@@ -10,6 +10,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,8 +44,8 @@ public class Customer {
 	@OneToOne(cascade={CascadeType.PERSIST})
 	private Address address;
 	
-	@OneToMany(mappedBy="customer")
-	@JoinColumn(name="customer_id")
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="customer")
+	//@JoinColumn(name="customer_id")
 	private List<Order> orders;
 	
 	public Customer(){
