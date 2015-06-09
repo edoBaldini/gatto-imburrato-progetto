@@ -34,7 +34,6 @@ public class Provider {
 	private Address address;
 	
 	public Provider(){
-		this.products=new ArrayList<Product>();
 	}
 	
 	public Provider(String name, String phoneNumber, String email, String vatin, Address address){

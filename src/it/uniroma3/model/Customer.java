@@ -48,7 +48,6 @@ public class Customer {
 	private List<Order> orders;
 	
 	public Customer(){
-		this.orders = new ArrayList<Order> ();
 	}
 	
 	public Customer(String firstname, String lastname, String email,
@@ -121,8 +120,8 @@ public class Customer {
 	public List<Order> getOrders() {
 		return orders;
 	}
-	public void setOrders(Order orders) {
-		this.orders.add(orders);
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
 	}
 	public String getId() {
 		return id;

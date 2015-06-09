@@ -19,12 +19,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 @Entity
-@Table(name = "orders")
 @NamedQuery(name="all-orders-customer",
-query="SELECT o FROM Orders o WHERE o.customer = :id")
-
-
+query="SELECT o FROM Orders o WHERE o.customer_id = :id")
+@Table(name = "orders")
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

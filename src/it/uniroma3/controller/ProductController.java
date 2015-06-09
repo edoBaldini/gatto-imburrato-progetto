@@ -4,6 +4,7 @@ import java.util.List;
 
 import it.uniroma3.model.Product;
 import it.uniroma3.model.ProductFacade;
+import it.uniroma3.model.Provider;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -20,6 +21,7 @@ public class ProductController {
 	private String code;
 	private Product product;
 	private List<Product> products;
+	private List<Provider> providers;
 	
 	@EJB
 	private ProductFacade productFacade;
@@ -98,6 +100,14 @@ public class ProductController {
 
 	public void setProducts(List<Product> products) {
 		this.products = products;
+	}
+
+	public List<Provider> getProviders() {
+		return providers;
+	}
+
+	public void setProviders(List<Provider> providers) {
+		this.providers = providers;
 	}
 }
 

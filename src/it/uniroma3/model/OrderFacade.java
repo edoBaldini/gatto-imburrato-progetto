@@ -36,12 +36,12 @@ public class OrderFacade {
 		return orders;
 	}
 	
-/*	public List<Orders> getAllOrders(Long id){
-		TypedQuery<Orders> o=em.createNamedQuery("all-orders-customer",Orders.class);
+	public List<Order> getAllOrders(Long id){
+		TypedQuery<Order> o=em.createNamedQuery("all-orders-customer",Order.class);
 		o.setParameter("id", id);
-		List<Orders> listOrders= o.getResultList();
-		return listOrders;
-	}*/
+		List<Order> orders= o.getResultList();
+		return orders;
+	}
 	
 	public void updateOrder(Order order){
 		em.merge(order);

@@ -54,11 +54,16 @@
 									action="#{productController.listProducts}"
 									value="List all Products" />
 							</h:form></li>
-						<c:if test="${customerController.customer.email == null}" >
+						<li><h:form>
+								<h:commandLink styleClass="c-link"
+									action="#{orderController.listOrders}" value="List all Orders" />
+							</h:form></li>
+						<c:if test="${customerController.customer.email == null}">
 							<li><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
-							</c:if>
-							<c:if test="${customerController.customer.email != null}">
-							<li class="active"><a href='<c:url value="/faces/customer.jsp" />'>${customerController.customer.firstname}</a></li>
+						</c:if>
+						<c:if test="${customerController.customer.email != null}">
+							<li class="active"><a
+								href='<c:url value="/faces/customer.jsp" />'>${customerController.customer.firstname}</a></li>
 						</c:if>
 
 					</ul>
@@ -66,26 +71,38 @@
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
-
-	<h:form>
-		<br />
-		<br />
-		<br />
-		<br />
-		<form class="form col-md-12 center-block">
-			<div class="form-group">Email:
-				${customerController.customer.email}</div>
-			<div class="form-group">Password:
-				${customerController.customer.password}</div>
-			<div class="form-group">Address:
-				${customerController.customer.address.city}</div>
-								
-			<h:commandLink action="#{orderController.listOrders}" value="Ordini" />
-			
-		</form>
-
-		</div>
+	<div class="container ">
+		<h:form>
+			<br />
+			<br />
+			<br />
+			<br />
+			<form class="form col-md-12 center-block">
+				<div class="form-group">Email:
+					${customerController.customer.email}</div>
+				<div class="form-group">Password:
+					${customerController.customer.password}</div>
+				<div class="form-group">Address:
+					${customerController.customer.address.city}</div>
+			</form>
+	</div>
 	</h:form>
+	<div class="container">
+		<h:form>
+			<h:commandLink styleClass="c-link"
+				action="#{orderController.listOrders}" value="List all Orders" />
+		</h:form>
+
+		<h:form>
+			<h:commandLink
+				action="#{orderController.listOrders}" value="List all Orders" />
+				<f:param name = "id" value = "#{customerController.customer.id}" />
+		</h:form>
+		
+		<c:if test="${customerController.customer.orders == null}">
+							<li>Hello Orders Customer</li>
+						</c:if>		
+	</div>
 	</f:view>
 	<!-- Bootstrap core JavaScript
     ================================================== -->

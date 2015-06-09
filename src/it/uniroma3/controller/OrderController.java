@@ -35,10 +35,10 @@ public class OrderController {
 		return "orders";
 	}
 	
-/*	public String listOrders(Long id){
-		this.listOrders = ordersFacade.getAllOrders(id);
-		return "listOrders";
-	}*/
+	public String listOrders(Long id){
+		this.orders = orderFacade.getAllOrders(id);
+		return "orders";
+	}
 	
 	public String findOrder(){
 		this.order = orderFacade.getOrder(id);

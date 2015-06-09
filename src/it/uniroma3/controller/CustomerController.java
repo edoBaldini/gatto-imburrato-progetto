@@ -32,7 +32,7 @@ public class CustomerController{
 	private List<Order> orders;
 	private List<Customer> customers;
 	
-	@EJB()
+	@EJB
 	private CustomerFacade customerFacade;
 	
 	public String createCustomer(){
@@ -145,8 +145,8 @@ public class CustomerController{
 		return orders;
 	}
 
-	public void setOrders(Order order) {
-		this.orders.add(order);
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
 	}
 	
 

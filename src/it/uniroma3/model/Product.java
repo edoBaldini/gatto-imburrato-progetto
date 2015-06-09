@@ -1,5 +1,6 @@
 package it.uniroma3.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -25,7 +26,7 @@ import javax.persistence.Column;
 	@Column(length = 2000)
 	private String description;
 	
-	@ManyToMany(mappedBy = "product")
+	@ManyToMany(mappedBy = "products")
 	private List<Provider> providers;
 	
 	@Column(nullable = false)
@@ -39,6 +40,7 @@ import javax.persistence.Column;
         this.price = price;
         this.description = description;
         this.code = code;
+        this.providers = new ArrayList<Provider>();
 }
 
     //          Getters & Setters        
