@@ -66,8 +66,9 @@
 				</tr>
 				<c:forEach var="order" items="#{customerController.customer.orders}">
 					<tr>
-						<td><h:commandLink action="#{order.orderLines}"
-								value="#{order.id}" />
+						<td><h:commandLink action="#{orderController.takeOrder}" >${order.id}
+							<f:param name="order" value="#{order}" />
+							</h:commandLink>
 						</td>
 					</tr>
 				</c:forEach>

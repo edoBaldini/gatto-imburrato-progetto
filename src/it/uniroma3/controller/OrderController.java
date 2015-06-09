@@ -15,12 +15,13 @@ import javax.faces.bean.ManagedProperty;
 @ManagedBean
 public class OrderController {
 	
-	//@ManagedProperty(value="#{param.id}")
+	@ManagedProperty(value="#{param.id}")
 	private Long id;
 	private Date creationTime;
 	private Customer customer;
 	private Order order;
 	private List<Order> orders;
+	private List<OrderLine> orderLines;
 	
 	@EJB
 	private OrderFacade orderFacade;
@@ -81,8 +82,8 @@ public class OrderController {
 		return orders;
 	}
 
-	public void setOrders(Order orders) {
-		this.orders.add(orders);
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
 	}
 
 	public OrderFacade getOrdersFacade() {
@@ -92,4 +93,18 @@ public class OrderController {
 	public void setOrdersFacade(OrderFacade orderFacade) {
 		this.orderFacade = orderFacade;
 	}
+
+	public List<OrderLine> getOrderLines() {
+		return orderLines;
+	}
+
+	public void setOrderLines(List<OrderLine> orderLines) {
+		this.orderLines = orderLines;
+	}
+	
+	public String takeOrder(Order order){
+		this.order = order;
+		return "orderLines";
+	}
+	
 }
