@@ -40,7 +40,7 @@ public class Order {
 	@OneToMany(fetch=FetchType.EAGER, mappedBy="order",cascade={CascadeType.PERSIST, CascadeType.REMOVE})
 	//@JoinColumn(name="orders_id")
 	private List<OrderLine> orderLines;
-	
+
 	public Order(){
 		this.orderLines=new ArrayList<OrderLine>();
 	}
@@ -61,14 +61,19 @@ public class Order {
 	public void setCostumer(Customer costumer) {
 		this.customer = costumer;
 	}
-	public List<OrderLine> getOrderLine() {
+	public List<OrderLine> getOrderLines() {
 		return orderLines;
 	}
-	public void setOrderLine(OrderLine orderLine) {
-		this.orderLines.add( orderLine);
+	
+	public void setOrderLines(List<OrderLine> orderLines) {
+		this.orderLines = orderLines;
 	}
+
 	public Long getId() {
 		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	public boolean equals(Object obj){
@@ -90,5 +95,9 @@ public class Order {
         sb.append("}\n");
         return sb.toString();
 	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
 
 }

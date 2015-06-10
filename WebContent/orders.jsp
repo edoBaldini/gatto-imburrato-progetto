@@ -39,16 +39,16 @@
 						<li><a href='<c:url value="/faces/index.jsp" />'>Home</a></li>
 						<li><a href='<c:url value="/faces/newProduct.jsp" />'>Insert
 								a new product</a></li>
-						<li><h:form styleClass="form-active">
-								<h:commandLink styleClass="c-link-active"
+						<li><h:form >
+								<h:commandLink styleClass="c-link"
 									action="#{productController.listProducts}"
 									value="List all Products" />
 							</h:form></li>
 						<c:if test="${customerController.customer.email == null}">
-							<li><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
+							<li class="active"><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
 						</c:if>
 						<c:if test="${customerController.customer.email != null}">
-							<li><a href='<c:url value="/faces/customer.jsp" />'>${customerController.customer.firstname}</a></li>
+							<li class="active"><a href='<c:url value="/faces/customer.jsp" />'>${customerController.customer.firstname}</a></li>
 						</c:if>
 					</ul>
 			</div>
@@ -64,16 +64,17 @@
 				<tr>
 					<th>ID</th>
 				</tr>
-				<c:forEach var="order" items="#{customerController.customer.orders}">
+				<c:forEach var="order" items="#{customerController.orders}">
 					<tr>
-						<td><h:commandLink action="#{orderController.takeOrder}" >${order.id}
-							<f:param name="order" value="#{order}" />
+						<td><h:commandLink action="#{orderController.findOrder}" value="#{order.id }">
+							<f:param name="id" value="#{order.id}" />
 							</h:commandLink>
 						</td>
 					</tr>
-				</c:forEach>
+				</c:forEach>		
 			</table>
 		</h:form>
+		
 		</f:view>
 	</div>
 	<!-- Bootstrap core JavaScript

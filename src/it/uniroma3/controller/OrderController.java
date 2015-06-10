@@ -22,7 +22,7 @@ public class OrderController {
 	private Order order;
 	private List<Order> orders;
 	private List<OrderLine> orderLines;
-	
+
 	@EJB
 	private OrderFacade orderFacade;
 	
@@ -38,12 +38,20 @@ public class OrderController {
 	
 	public String listOrders(Long id){
 		this.orders = orderFacade.getAllOrders(id);
+		this.id=id;
 		return "orders";
 	}
 	
 	public String findOrder(){
 		this.order = orderFacade.getOrder(id);
-		return "order";
+		this.orderLines= this.order.getOrderLines();
+		return "orderLines";
+	}
+	
+	public String findOrder(Long id){
+		this.order = orderFacade.getOrder(id);
+		this.orderLines= this.order.getOrderLines();
+		return "orderLines";
 	}
 
 	public Long getId() {
@@ -100,11 +108,6 @@ public class OrderController {
 
 	public void setOrderLines(List<OrderLine> orderLines) {
 		this.orderLines = orderLines;
-	}
-	
-	public String takeOrder(Order order){
-		this.order = order;
-		return "orderLines";
 	}
 	
 }

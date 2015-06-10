@@ -54,10 +54,6 @@
 									action="#{productController.listProducts}"
 									value="List all Products" />
 							</h:form></li>
-						<li><h:form>
-								<h:commandLink styleClass="c-link"
-									action="#{orderController.listOrders}" value="List all Orders" />
-							</h:form></li>
 						<c:if test="${customerController.customer.email == null}">
 							<li><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
 						</c:if>
@@ -88,9 +84,9 @@
 	</div>
 	</h:form>
 	<div class="container">
-
-		<a href='<c:url value="/faces/orders.jsp" />'>List of Orders</a>		
-		
+		<h:form>
+			<h:commandLink action="#{customerController.listOrders}" value="List all Orders" />
+		</h:form>
 	</div>
 	</f:view>
 	<!-- Bootstrap core JavaScript

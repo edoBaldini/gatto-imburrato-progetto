@@ -30,7 +30,7 @@ public class Customer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String id;
+	private Long id;
 
 	@Column(nullable = false)
 	private String firstname;
@@ -124,8 +124,11 @@ public class Customer {
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
-	public String getId() {
+	public Long getId() {
 		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String toString(){
@@ -145,5 +148,7 @@ public class Customer {
 
 
 	}
+
+
 	
 }

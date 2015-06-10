@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import it.uniroma3.model.Address;
@@ -13,7 +12,7 @@ import it.uniroma3.model.Customer;
 import it.uniroma3.model.CustomerFacade;
 import it.uniroma3.model.Order;
 
-@ManagedBean(name = "customerController")
+@ManagedBean
 @SessionScoped
 public class CustomerController{
 
@@ -146,6 +145,11 @@ public class CustomerController{
 			return "login";
 		}
 		
+	}
+	
+	public String listOrders(){
+		this.orders=this.customer.getOrders();
+		return "orders";
 	}
 
 

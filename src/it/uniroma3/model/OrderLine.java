@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
 import javax.persistence.Column;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -92,6 +91,10 @@ public class OrderLine {
 		sb.append(", product='").append(product); 
 		sb.append("}\n");
 		return sb.toString();
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 

@@ -51,6 +51,8 @@
           <h:form styleClass="form-active">
 					<h:commandButton styleClass="btn"  value="Torna" action="#{productController.listProducts}"  />
 		  </h:form>
+
+		  
 		  </f:view>
 		  </div>	
       </div>
