@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +27,7 @@ import javax.persistence.Column;
 	@Column(length = 2000)
 	private String description;
 	
-	@ManyToMany(mappedBy = "products")
+	@ManyToMany(fetch=FetchType.EAGER,mappedBy = "products")
 	private List<Provider> providers;
 	
 	@Column(nullable = false)

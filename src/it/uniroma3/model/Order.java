@@ -21,8 +21,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@NamedQuery(name="all-orders-customer",
-query="SELECT o FROM Orders o WHERE o.customer_id = :id")
 @Table(name = "orders")
 public class Order {
 	@Id

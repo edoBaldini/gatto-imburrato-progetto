@@ -73,18 +73,22 @@
 			<br />
 			<br />
 			<br />
-			<form class="form col-md-12 center-block">
+			<h:form styleClass="form col-md-12 center-block">
 				<div class="form-group">Email:
 					${customerController.customer.email}</div>
 				<div class="form-group">Password:
 					${customerController.customer.password}</div>
-				<div class="form-group">Address:
-					${customerController.customer.address.city}</div>
-			</form>
+			</h:form>
 	</div>
 	</h:form>
 	<div class="container">
 		<h:form>
+          <div class="form-group">
+              Address: <h:commandLink action="#{addressController.findAddress }" 
+              						  value="#{customerController.customer.address.street}">
+              				<f:param name="id" value="#{customerController.customer.address.id}" />
+              		   </h:commandLink>
+            </div>
 			<h:commandLink action="#{customerController.listOrders}" value="List all Orders" />
 		</h:form>
 	</div>

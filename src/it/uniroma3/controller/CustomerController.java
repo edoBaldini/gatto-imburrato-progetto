@@ -137,6 +137,17 @@ public class CustomerController{
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
+	
+	
+	public List<Customer> getCustomers() {
+		return customers;
+	}
+
+	public void setCustomers(List<Customer> customers) {
+		this.customers = customers;
+	}
+
+	
 	public String loginCustomer(){
 		try{
 		this.customer = customerFacade.getCustomer(email, password);
@@ -151,6 +162,7 @@ public class CustomerController{
 		this.orders=this.customer.getOrders();
 		return "orders";
 	}
+
 
 
 

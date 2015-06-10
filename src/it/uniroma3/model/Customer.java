@@ -41,11 +41,10 @@ public class Customer {
 	private Date registerdate;
 	private String password;
 	
-	@OneToOne(cascade={CascadeType.PERSIST})
+	@OneToOne(fetch=FetchType.EAGER, cascade={CascadeType.PERSIST})
 	private Address address;
 	
 	@OneToMany(fetch=FetchType.EAGER, mappedBy="customer")
-	//@JoinColumn(name="customer_id")
 	private List<Order> orders;
 	
 	public Customer(){

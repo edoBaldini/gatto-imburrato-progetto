@@ -30,40 +30,34 @@
   <div class="modal-dialog">
   <div class="modal-content">
       <div class="modal-header">
-          <h1 class="text-center">${productController.product.name}</h1>
+          <h1 class="text-center">${providerController.provider.name}</h1>
           <h2>Details</h2>
       </div>
       <div class="modal-body">
           <form class="form col-md-12 center-block">
             <div class="form-group">
-              Code: ${productController.product.code}
+              Phone Number: ${providerController.provider.phoneNumber}
             </div>
             <div class="form-group">
-              Price: ${productController.product.price}
+              Email: ${providerController.provider.email}
             </div>
             <div class="form-group">
-              Description: ${productController.product.description}
+              Vatin: ${providerController.provider.vatin}
             </div>
+            
           </form>
       </div>
       <div class="modal-footer">
-          <div class="col-md-12">
           <f:view>
+          <h:form>
           <div class="form-group">
-          <table>
-          <tr>
-          <th> Provider Name </th>
-          </tr>
-          <c:forEach var="provider" items="#{productController.providers }">
-          <tr>
-          <td><h:form><h:commandLink action="#{providerController.findProvider}" value="#{provider.name }">
-							<f:param name="id" value="#{provider.id}" />
-							</h:commandLink></h:form></td></tr>
-          	
-          </c:forEach>
-          </table>
-          </div>
-		  </f:view>
+              Address: <h:commandLink action="#{addressController.findAddress }" 
+              						  value="#{providerController.provider.address.street}">
+              				<f:param name="id" value="#{providerController.provider.address.id}" />
+              		   </h:commandLink>
+            </div>
+          </h:form>
+		</f:view>
 		  </div>	
       </div>
   </div>

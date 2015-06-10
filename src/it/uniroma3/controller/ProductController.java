@@ -38,11 +38,13 @@ public class ProductController {
 
 	public String findProduct() {
 		this.product = productFacade.getProduct(id);
+		this.providers = this.product.getProviders(); 
 		return "product";
 	}
 	
 	public String findProduct(Long id) {
 		this.product = productFacade.getProduct(id);
+		this.providers = this.product.getProviders();
 		return "product";
 	}
 
