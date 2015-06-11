@@ -25,48 +25,65 @@
 
 
 <body>
-<!--login modal-->
-<div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog">
-  <div class="modal-content">
-      <div class="modal-header">
-          <h1 class="text-center">${providerController.provider.name}</h1>
-          <h2>Details</h2>
-      </div>
-      <div class="modal-body">
-          <form class="form col-md-12 center-block">
-            <div class="form-group">
-              Phone Number: ${providerController.provider.phoneNumber}
-            </div>
-            <div class="form-group">
-              Email: ${providerController.provider.email}
-            </div>
-            <div class="form-group">
-              Vatin: ${providerController.provider.vatin}
-            </div>
-            
-          </form>
-      </div>
-      <div class="modal-footer">
-          <f:view>
-          <h:form>
-          <div class="form-group">
-              Address: <h:commandLink action="#{addressController.findAddress }" 
-              						  value="#{providerController.provider.address.street}">
-              				<f:param name="id" value="#{providerController.provider.address.id}" />
-              		   </h:commandLink>
-            </div>
-          </h:form>
-		</f:view>
-		  </div>	
-      </div>
-  </div>
-  </div>
+<div id="loginModal" class="modal show" tabindex="-1" role="dialog"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<nav class="navbar navbar-inverse navbar-fixed-top">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed"
+							data-toggle="collapse" data-target="#navbar"
+							aria-expanded="false" aria-controls="navbar">
+							<span class="sr-only">Toggle navigation</span> <span
+								class="icon-bar"></span> <span class="icon-bar"></span> <span
+								class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href='<c:url value="/faces/index.jsp" />'>Gatto-Imburrato-commerce</a>
+					</div>
+				</div>
+			</nav>
+			<div class="modal-header">
+				<h1 class="text-center">List Products</h1>
+			</div>
+			<div class="modal-body">
+			<h2>Details</h2>
+			</div>
+			<div class="modal-footer">
+				<div class="col-md-12">
+					<form class="form col-md-12 center-block">
+						<div class="form-group">Phone Number:
+							${providerController.provider.phoneNumber}</div>
+						<div class="form-group">Email:
+							${providerController.provider.email}</div>
+						<div class="form-group">Vatin:
+							${providerController.provider.vatin}</div>
+
+					</form>
+				
+					<f:view>
+						<h:form>
+							<div class="form-group">
+								Address:
+								<h:commandLink action="#{addressController.findAddress }"
+									value="#{providerController.provider.address.street}">
+									<f:param name="id"
+										value="#{providerController.provider.address.id}" />
+								</h:commandLink>
+							</div>
+						</h:form>
+					</f:view>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 	<!-- script references -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+	<script
+		src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
 
 </body>
+
 
 </html>

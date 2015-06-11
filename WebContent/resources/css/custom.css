@@ -33,7 +33,14 @@
 	border-color:#00000;
 	}
 
-
+.modal {
+	background-color:#222222;
 }
-
-
+		
+.form-group table {
+	float: left;
+	text-align: left;
+}
+.modal-footer .col-md-12 {
+	text-align: left;
+}
