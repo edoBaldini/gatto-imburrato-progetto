@@ -19,6 +19,7 @@ public class ProductController {
 	private Float price;
 	private String description;
 	private String code;
+	private Integer quantity;
 	private Product product;
 	private List<Product> products;
 	private List<Provider> providers;
@@ -27,7 +28,7 @@ public class ProductController {
 	private ProductFacade productFacade;
 	
 	public String createProduct() {
-		this.product = productFacade.createProduct(name, code, price, description);
+		this.product = productFacade.createProduct(name, code, price, description, quantity);
 		return "product"; 
 	}
 	
@@ -110,6 +111,14 @@ public class ProductController {
 
 	public void setProviders(List<Provider> providers) {
 		this.providers = providers;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 }
 

@@ -55,6 +55,8 @@
 							${productController.product.price}</div>
 						<div class="form-group">Description:
 							${productController.product.description}</div>
+						<div class="form-group">Quantity:
+							${productController.product.quantity}</div>
 					</form>
 				</div>
 				<div class="modal-footer">

@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="f"  uri="http://java.sun.com/jsf/core"%>
-<%@ taglib prefix="h"  uri="http://java.sun.com/jsf/html"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -20,61 +21,77 @@
 
 <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 </head>
-<body>
+<body >
 	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Gatto-Imburrato-commerce</a>
-			</div>
-			<div id="navbar" class="collapse navbar-collapse">
-				<f:view>
-					<ul class="nav navbar-nav">
-						<li><a href='<c:url value="/faces/index.jsp" />'>Home</a></li>
-						<li><a href='<c:url value="/faces/newProduct.jsp" />'>Insert
-								a new product</a></li>
-						<li><h:form >
-								<h:commandLink styleClass="c-link"
-									action="#{productController.listProducts}"
-									value="List all Products" />
-							</h:form></li>
-						<c:if test="${customerController.customer.email == null}">
-							<li class="active"><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
-						</c:if>
-						<c:if test="${customerController.customer.email != null}">
-							<li class="active"><a href='<c:url value="/faces/customer.jsp" />'>${customerController.customer.firstname}</a></li>
-						</c:if>
-					</ul>
-			</div>
-			<!--/.nav-collapse -->
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+				aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Gatto-Imburrato-commerce</a>
 		</div>
+		<div id="navbar" class="collapse navbar-collapse">
+			<f:view>
+				<ul class="nav navbar-nav">
+					<li><a href='<c:url value="/faces/index.jsp" />'>Home</a></li>
+					<li><h:form>
+							<h:commandLink styleClass="c-link"
+								action="#{productController.listProducts}"
+								value="List all Products" />
+						</h:form></li>
+					<c:if test="${customerController.customer.email == null}">
+						<li class="active"><a
+							href='<c:url value="/faces/login.jsp" />'>Login</a></li>
+					</c:if>
+					<c:if test="${customerController.customer.email != null}">
+						<li class="active"><a
+							href='<c:url value="/faces/customer.jsp" />'>${customerController.customer.firstname}</a></li>
+						<li><a href='<c:url value="/faces/newOrder.jsp" />'> New Order</a></li>
+					</c:if>
+				</ul>
+		</div>
+		<!--/.nav-collapse -->
+	</div>
 	</nav>
 	<br />
 	<br />
 	<div class="container">
-		<h1>Orders</h1>
 		<h:form>
-			<table>
-				<tr>
-					<th>ID</th>
-				</tr>
-				<c:forEach var="order" items="#{customerController.orders}">
-					<tr>
-						<td><h:commandLink action="#{orderController.findOrder}" value="#{order.id }">
-							<f:param name="id" value="#{order.id}" />
-							</h:commandLink>
-						</td>
-					</tr>
-				</c:forEach>		
-			</table>
-		</h:form>
-		
+			<center><table class="table-order" border="1">
+			  <tr>
+			    <th class="th-orders" colspan="4" scope="col">Orders</th>
+		      </tr>
+			  <tr>
+			    <td>&nbsp;</td>
+			    <td class="td-time">Created</td>
+			    <td class="td-time">Closed</td>
+			    <td class="td-time">Processed</td>
+		      </tr>
+			  <tr>
+			    <td class="td-time">ID</td>
+			    <td class="td-attribute">Creation Time</td>
+			    <td class="td-attribute">Closing Date</td>
+			    <td class="td-attribute">Processing Date</td>
+		      </tr>
+		      <c:forEach var="order" items="#{customerController.orders}">
+		      <tr>
+		      <td class="td-value"><h:commandLink action="#{orderController.findOrder}"
+									value="#{order.id }">
+									<f:param name="id" value="#{order.id}" />
+								</h:commandLink></td>
+							<td class="td-value">${order.creationTime }</td>
+							<td class="td-value">${order.closingDate }</td>
+							<td class="td-value">${order.closingDate }</td>
+		      </tr>
+		      </c:forEach>
+		      
+		  </table></center>
+      </h:form>
+
 		</f:view>
 	</div>
 	<!-- Bootstrap core JavaScript

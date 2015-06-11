@@ -37,8 +37,6 @@
 				<f:view>
 					<ul class="nav navbar-nav">
 						<li><a href='<c:url value="/faces/index.jsp" />'>Home</a></li>
-						<li><a href='<c:url value="/faces/newProduct.jsp" />'>Insert
-								a new product</a></li>
 						<li><h:form >
 								<h:commandLink styleClass="c-link"
 									action="#{productController.listProducts}"
@@ -49,6 +47,7 @@
 						</c:if>
 						<c:if test="${customerController.customer.email != null}">
 							<li class="active"><a href='<c:url value="/faces/customer.jsp" />'>${customerController.customer.firstname}</a></li>
+							<li><a href='<c:url value="/faces/newOrder.jsp" />'> New Order</a></li>
 						</c:if>
 					</ul>
 			</div>
@@ -58,24 +57,26 @@
 	<br />
 	<br />
 	<div class="container">
-		<h1>Orders</h1>
 		<h:form>
-			<table>
-				<tr>
-					<th>ID</th>
-					<th>Quantity</th>
-					<th>Unit Price</th>
-					<th>Product Name</th>
-				</tr>
-				<c:forEach var="orderLine" items="#{orderController.orderLines}">
-					<tr>
-						<td>${orderLine.id}</td>
-						<td>${orderLine.quantity}</td>
-						<td>${orderLine.unitPrice}</td>
-						<td>${orderLine.product.name}</td>
-					</tr>
-				</c:forEach>		
-			</table>
+			<table class="table-order" width="100%" border="1">
+			  <tr>
+			    <th class="th-orders"colspan="4" scope="col">Order Lines</th>
+		      </tr>
+              <tr>
+              <td class="td-attribute">ID</td>
+              <td class="td-attribute">Quantity</td>
+              <td class="td-attribute">Unit Price (€)</td>
+              <td class="td-attribute">Name Product</td>
+              </tr>
+              <c:forEach var="orderLine" items="#{orderController.orderLines}">
+			  <tr>
+			    <td class="td-value">${orderLine.id}</td>
+			    <td class="td-value">${orderLine.quantity}</td>
+			    <td class="td-value">${orderLine.unitPrice}</td>
+			    <td class="td-value">${orderLine.product.name}</td>
+		      </tr>
+              </c:forEach>
+		  </table>
 		</h:form>
 		</f:view>
 	</div>

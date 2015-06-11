@@ -158,6 +158,11 @@ public class CustomerController{
 		
 	}
 	
+	public String logoutCustomer(){
+		this.customer = null;
+		return "login";
+	}
+	
 	public String listOrders(){
 		this.orders=this.customer.getOrders();
 		return "orders";

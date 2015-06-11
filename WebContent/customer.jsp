@@ -47,8 +47,6 @@
 				<f:view>
 					<ul class="nav navbar-nav">
 						<li><a href='<c:url value="/faces/index.jsp" />'>Home</a></li>
-						<li><a href='<c:url value="/faces/newProduct.jsp" />'>Insert
-								a new product</a></li>
 						<li><h:form>
 								<h:commandLink styleClass="c-link"
 									action="#{productController.listProducts}"
@@ -60,6 +58,7 @@
 						<c:if test="${customerController.customer.email != null}">
 							<li class="active"><a
 								href='<c:url value="/faces/customer.jsp" />'>${customerController.customer.firstname}</a></li>
+							<li><a href='<c:url value="/faces/newOrder.jsp" />'> New Order</a></li>	
 						</c:if>
 
 					</ul>
@@ -76,8 +75,14 @@
 			<h:form styleClass="form col-md-12 center-block">
 				<div class="form-group">Email:
 					${customerController.customer.email}</div>
-				<div class="form-group">Password:
-					${customerController.customer.password}</div>
+				<div class="form-group">Name:
+					${customerController.customer.firstname}</div>
+				<div class="form-group">Last name:
+					${customerController.customer.lastname}</div>
+				<div class="form-group">Date of birth:
+					${customerController.customer.dateofbirth}</div>	
+				<div class="form-group">Register data:
+					${customerController.customer.registerdate}</div>
 			</h:form>
 	</div>
 	</h:form>
@@ -89,7 +94,15 @@
               				<f:param name="id" value="#{customerController.customer.address.id}" />
               		   </h:commandLink>
             </div>
+            <div class="from-group">
 			<h:commandLink action="#{customerController.listOrders}" value="List all Orders" />
+			</div>
+			<br><br>
+			<div class="form-group">
+			<h:commandButton value="Log Out"  action="#{customerController.logoutCustomer}"/>
+			</div>
+			
+			
 		</h:form>
 	</div>
 	</f:view>

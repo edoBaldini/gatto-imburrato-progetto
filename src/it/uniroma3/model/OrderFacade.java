@@ -17,8 +17,8 @@ public class OrderFacade {
 	@PersistenceContext(unitName = "unit-esame")
 	private EntityManager em;
 
-	public Order createOrders(Date creationTime, Customer customer) {
-		Order order = new Order(creationTime, customer);
+	public Order createOrders(Date creationTime, Customer customer, Date closingDate, Date processingDate) {
+		Order order = new Order(creationTime, customer, closingDate, processingDate);
 		em.persist(order);
 		return order;
 	}

@@ -44,3 +44,27 @@
 .modal-footer .col-md-12 {
 	text-align: left;
 }
+
+.table-order{
+	margin-top: 40px;
+}
+
+.th-orders {
+	font-size: 36px;
+	text-align: center;
+	background-color: #222222;
+	color: #fff;
+}
+.td-time {
+	font-size: 24px;
+	text-align: center;
+}
+.td-attribute {
+	text-align: center;
+	font-size: 18px;
+	padding: 10px;
+}
+.td-value{
+	text-align: center;
+	padding: 10px;
+}

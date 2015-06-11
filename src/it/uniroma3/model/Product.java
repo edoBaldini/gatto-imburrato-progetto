@@ -22,9 +22,9 @@ import javax.persistence.Column;
 
 	@Column(nullable = false)
 	private String name;
-
+	private Integer quantity;
 	private Float price;
-	@Column(length = 2000)
+	@Column(length = 255)
 	private String description;
 	
 	@ManyToMany(fetch=FetchType.EAGER,mappedBy = "products")
@@ -36,8 +36,9 @@ import javax.persistence.Column;
 	public Product() {
     }
 
-	public Product(String name, Float price, String description, String code) {
+	public Product(String name, Float price, String description, String code, Integer quantity) {
         this.name = name;
+        this.quantity = quantity;
         this.price = price;
         this.description = description;
         this.code = code;
@@ -101,6 +102,14 @@ import javax.persistence.Column;
 
 	public void setProviders(List<Provider> providers) {
 		this.providers = providers;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 	
 }

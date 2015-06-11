@@ -30,6 +30,8 @@ public class Order {
 	@Column (nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date creationTime;
+	private Date closingDate;
+	private Date processingDate;
 	
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
@@ -42,9 +44,11 @@ public class Order {
 	public Order(){
 		this.orderLines=new ArrayList<OrderLine>();
 	}
-	public Order(Date creationTime, Customer costumer){
+	public Order(Date creationTime, Customer costumer, Date closingDate, Date processingDate){
 		this.creationTime=creationTime;
 		this.customer=costumer;
+		this.closingDate=closingDate;
+		this.processingDate=processingDate;
 		this.orderLines=new ArrayList<OrderLine>();
 	}
 	public Date getCreationTime() {
@@ -95,6 +99,18 @@ public class Order {
 	}
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+	public Date getClosingDate() {
+		return closingDate;
+	}
+	public void setClosingDate(Date closingDate) {
+		this.closingDate = closingDate;
+	}
+	public Date getProcessingDate() {
+		return processingDate;
+	}
+	public void setProcessingDate(Date processingDate) {
+		this.processingDate = processingDate;
 	}
 
 

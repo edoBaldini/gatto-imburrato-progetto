@@ -19,6 +19,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Column;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 
@@ -37,9 +39,11 @@ public class Customer {
 	private String lastname;
 	private String email;
 	private String phonenumber;
+	private String password;
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateofbirth;
 	private Date registerdate;
-	private String password;
+	
 	
 	@OneToOne(fetch=FetchType.EAGER, cascade={CascadeType.PERSIST})
 	private Address address;

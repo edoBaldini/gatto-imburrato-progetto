@@ -48,8 +48,6 @@
 					<ul class="nav navbar-nav">
 						<li class="active"><a
 							href='<c:url value="/faces/index.jsp" />'>Home</a></li>
-						<li><a href='<c:url value="/faces/newProduct.jsp" />'>Insert
-								a new product</a></li>
 						<li><h:form>
 								<h:commandLink styleClass="c-link"
 									action="#{productController.listProducts}"
@@ -60,6 +58,7 @@
 							</c:if>
 							<c:if test="${customerController.customer.email != null}">
 							<li><a href='<c:url value="/faces/customer.jsp" />'>${customerController.customer.firstname}</a></li>
+							<li><a href='<c:url value="/faces/newOrder.jsp" />'>New Order</a></li>
 						</c:if>
 					</ul>
 				</f:view>
