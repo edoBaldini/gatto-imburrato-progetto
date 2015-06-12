@@ -4,6 +4,7 @@ import it.uniroma3.model.Customer;
 import it.uniroma3.model.OrderLine;
 import it.uniroma3.model.Order;
 import it.uniroma3.model.OrderFacade;
+import it.uniroma3.model.Product;
 
 import java.util.Date;
 import java.util.List;
@@ -11,10 +12,11 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
 
 @ManagedBean
 public class OrderController {
-	
+
 	@ManagedProperty(value="#{param.id}")
 	private Long id;
 	private Date creationTime;
@@ -24,37 +26,57 @@ public class OrderController {
 	private Date processingDate;
 	private List<Order> orders;
 	private List<OrderLine> orderLines;
+	private List<Product> products;
 
 	@EJB
 	private OrderFacade orderFacade;
-	
+
 	public String createOrder(){
-		this.order = orderFacade.createOrders(creationTime, customer,closingDate,processingDate);
-		return "order";
+		this.creationTime = new Date();
+		this.customer = orderFacade.getCustomer(id);
+		this.order = orderFacade.createOrders(this.creationTime, customer);
+		this.customer.getOrders().add(this.order);
+		return this.listOrders();
 	}
-	
+
+	public String createOrder(Long id){
+		this.creationTime = new Date();
+		this.customer = orderFacade.getCustomer(id);
+		this.order = orderFacade.createOrders(this.creationTime, customer);
+		this.customer.getOrders().add(this.order);
+		this.id=this.order.getId();
+		return "creationOrder";
+	}
+
+
 	public String listOrders(){
 		this.orders = orderFacade.getAllOrders();
 		return "orders";
 	}
-	
+
 	public String listOrders(Long id){
 		this.orders = orderFacade.getAllOrders(id);
 		this.id=id;
 		return "orders";
 	}
-	
+
 	public String findOrder(){
 		this.order = orderFacade.getOrder(id);
 		this.orderLines= this.order.getOrderLines();
 		return "orderLines";
 	}
-	
+
 	public String findOrder(Long id){
 		this.order = orderFacade.getOrder(id);
 		this.orderLines= this.order.getOrderLines();
 		return "orderLines";
 	}
+
+	public String listProducts(){
+		this.products = orderFacade.getAllProducts();
+		return "newOrderLine";
+	}
+
 
 	public Long getId() {
 		return id;
@@ -127,5 +149,20 @@ public class OrderController {
 	public void setProcessingDate(Date processingDate) {
 		this.processingDate = processingDate;
 	}
+
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public void setProducts(List<Product> products) {
+		this.products = products;
+	}
 	
+	
+	public String closedOrder(){
+		this.order.setClosingDate(new Date());
+		this.orderFacade.updateOrder(this.order);
+		return "customer";
+	}
+
 }

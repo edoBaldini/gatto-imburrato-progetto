@@ -44,13 +44,13 @@ public class Order {
 	public Order(){
 		this.orderLines=new ArrayList<OrderLine>();
 	}
-	public Order(Date creationTime, Customer costumer, Date closingDate, Date processingDate){
+	public Order(Date creationTime, Customer costumer){
 		this.creationTime=creationTime;
 		this.customer=costumer;
-		this.closingDate=closingDate;
-		this.processingDate=processingDate;
 		this.orderLines=new ArrayList<OrderLine>();
 	}
+
+	
 	public Date getCreationTime() {
 		return creationTime;
 	}
@@ -80,11 +80,11 @@ public class Order {
 	
 	public boolean equals(Object obj){
 		Order order=(Order)obj;
-		return this.getCustomer().equals(customer) && order.getCreationTime().equals(order.getCreationTime());
+		return order.getCreationTime().equals(order.getCreationTime());
 	}
 	
 	public int hashCode(){
-		return this.customer.hashCode() + this.creationTime.hashCode();
+		return this.creationTime.hashCode();
 	}
 	
 	public String toString(){

@@ -14,8 +14,8 @@ public class OrderLineFacade {
 	@PersistenceContext(unitName = "unit-esame")
 	private EntityManager em;
 
-	public OrderLine createOrderLine(Float unitPrice, Integer quantity, Product product) {
-		OrderLine orderLine = new OrderLine( unitPrice,  quantity,  product);
+	public OrderLine createOrderLine(Float unitPrice, Integer quantity, Product product, Order order) {
+		OrderLine orderLine = new OrderLine( unitPrice,  quantity,  product, order);
 		em.persist(orderLine);
 		return orderLine;
 	}
@@ -46,6 +46,15 @@ public class OrderLineFacade {
 		OrderLine orderLine = em.find(OrderLine.class, id);
 		deleteOrderLine(orderLine);
 	}
+	
+	public Product getProduct(Long id){
+		Product product= em.find(Product.class, id);
+		return product;
+	}
 
+	public Order getOrder(Long id) {
+		Order order = em.find(Order.class, id);
+		return order;
+	}
 
 }

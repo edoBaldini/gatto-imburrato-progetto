@@ -17,12 +17,13 @@ public class OrderFacade {
 	@PersistenceContext(unitName = "unit-esame")
 	private EntityManager em;
 
-	public Order createOrders(Date creationTime, Customer customer, Date closingDate, Date processingDate) {
-		Order order = new Order(creationTime, customer, closingDate, processingDate);
+	public Order createOrders(Date creationTime, Customer customer) {
+		Order order = new Order(creationTime, customer);
 		em.persist(order);
 		return order;
 	}
 
+	
 	public Order getOrder(Long id) {
 		Order order = em.find(Order.class, id);
 		return order;
@@ -54,6 +55,19 @@ public class OrderFacade {
 	public void deleteOrder(Long id){
         Order order = em.find(Order.class, id);
         deleteOrder(order);
+	}
+	
+	
+	public Customer getCustomer(Long id){
+		Customer customer = em.find(Customer.class, id);
+		return customer;
+	}
+	
+	public List<Product> getAllProducts(){
+		CriteriaQuery<Product> cq = em.getCriteriaBuilder().createQuery(Product.class);
+        cq.select(cq.from(Product.class));
+        List<Product> products = em.createQuery(cq).getResultList();
+		return products;
 	}
 
 	

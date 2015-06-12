@@ -49,6 +49,8 @@
 				</div>
 				<div class="modal-body">
 					<form class="form col-md-12 center-block">
+						<div class="form-group">Id:
+							${productController.product.id}</div>
 						<div class="form-group">Code:
 							${productController.product.code}</div>
 						<div class="form-group">Price:

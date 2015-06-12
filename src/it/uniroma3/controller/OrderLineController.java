@@ -1,5 +1,6 @@
 package it.uniroma3.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import it.uniroma3.model.Order;
@@ -24,13 +25,19 @@ public class OrderLineController {
 	private Order order;
 	private OrderLine orderLine;
 	private List<OrderLine> orderLines;
+	@ManagedProperty(value="#{param.idOrder}")
+	private Long idOrder;
 	
 	@EJB
 	private OrderLineFacade orderLineFacade;
 	
 	public String createOrderLine(){
-		this.orderLine = orderLineFacade.createOrderLine(unitPrice, quantity, product);
-		return "orderLines";
+		this.order = orderLineFacade.getOrder(idOrder);
+		this.product = orderLineFacade.getProduct(id);
+		this.unitPrice = this.product.getPrice(); 
+		this.orderLine = orderLineFacade.createOrderLine(unitPrice, quantity, product,this.order);
+		this.order.getOrderLines().add(this.orderLine);
+		return "customer";
 	}
 	
 	public String listOrderLines(){
@@ -103,6 +110,14 @@ public class OrderLineController {
 
 	public void setOrderLines(List<OrderLine> orderLines) {
 		this.orderLines = orderLines;
+	}
+
+	public Long getIdOrder() {
+		return idOrder;
+	}
+
+	public void setIdOrder(Long idOrder) {
+		this.idOrder = idOrder;
 	}
 
 

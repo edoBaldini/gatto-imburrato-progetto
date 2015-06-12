@@ -32,10 +32,11 @@ public class OrderLine {
 
 	public OrderLine(){}
 
-	public OrderLine(Float unitPrice, Integer quantity, Product product){
+	public OrderLine(Float unitPrice, Integer quantity, Product product, Order order){
 		this.unitPrice=unitPrice;
 		this.quantity=quantity;
 		this.product=product;
+		this.order= order;
 	}
 
 	public Float getUnitPrice() {

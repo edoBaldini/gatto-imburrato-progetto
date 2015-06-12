@@ -25,65 +25,82 @@
 </head>
 
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Gatto-Imburrato-commerce</a>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-        <f:view>
-          <ul class="nav navbar-nav">
-            <li ><a href='<c:url value="/faces/index.jsp" />'>Home</a></li>
-            <li><h:form>
-					<h:commandLink styleClass="c-link" action="#{productController.listProducts}" value="List all Products" />
-				</h:form></li>
-			
-			<c:if test="${customerController.customer.email == null}" >
-							<li class="active"><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
-							</c:if>
-							<c:if test="${customerController.customer.email != null}">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Gatto-Imburrato-commerce</a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<f:view>
+					<ul class="nav navbar-nav">
+						<li><a href='<c:url value="/faces/index.jsp" />'>Home</a></li>
+						<li><h:form>
+								<h:commandLink styleClass="c-link"
+									action="#{productController.listProducts}"
+									value="List all Products" />
+							</h:form></li>
+
+						<c:if test="${customerController.customer.email == null}">
+							<li class="active"><a
+								href='<c:url value="/faces/login.jsp" />'>Login</a></li>
+						</c:if>
+						<c:if test="${customerController.customer.email != null}">
 							<li><a href='<c:url value="/faces/customer.jsp" />'>${customerController.customer.firstname}</a></li>
-							<li><a href='<c:url value="/faces/newOrder.jsp" />'> New Order</a></li>
+							<li><h:form>
+								<h:commandLink styleClass="c-link" value="New Order"
+									action="#{customerController.createOrder}">
+								</h:commandLink>
+							</h:form></li>
 						</c:if>
 
-          </ul>
-       
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav> <br /> <br /><br /> <br />
-    <div class="container">
-    
-<h:form>
-    <div>Email: <h:inputText value="#{customerController.email}"
-                     required="true"
-                     requiredMessage="Email is mandatory"
-                     id="email"/> <h:message for="email"/>
+					</ul>
+			</div>
+			<!--/.nav-collapse -->
+		</div>
+	</nav>
+	<br />
+	<br />
+	<br />
+	<br />
+	<div class="container">
+
+		<h:form>
+			<div>
+				Email:
+				<h:inputText value="#{customerController.email}" required="true"
+					requiredMessage="Email is mandatory" id="email" />
+				<h:message for="email" />
+			</div>
+			<div>
+				Password:
+				<h:inputSecret value="#{customerController.password}"
+					required="true" requiredMessage="Password is mandatory"
+					id="password" />
+				<h:message for="password" />
+			</div>
+
+			<div>
+				<h:commandButton value="Submit"
+					action="#{customerController.loginCustomer}" />
+			</div>
+
+		</h:form>
+		</f:view>
 	</div>
-    <div>Password: <h:inputSecret value="#{customerController.password}"
-                     required="true"
-                     requiredMessage="Password is mandatory"
-                     id="password"/> <h:message for="password" />
-	</div>
-    
-	<div>
-		<h:commandButton value="Submit"  action="#{customerController.loginCustomer}"/>
-	</div>
-	
-</h:form>
-</f:view>
-    </div>
-<!-- Bootstrap core JavaScript
+	<!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="resources/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
 </html>

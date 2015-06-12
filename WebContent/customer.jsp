@@ -58,7 +58,10 @@
 						<c:if test="${customerController.customer.email != null}">
 							<li class="active"><a
 								href='<c:url value="/faces/customer.jsp" />'>${customerController.customer.firstname}</a></li>
-							<li><a href='<c:url value="/faces/newOrder.jsp" />'> New Order</a></li>	
+							<li><h:form>
+								<h:commandLink styleClass="c-link" value="New Order"  action="#{customerController.createOrder}">
+								</h:commandLink>
+							</h:form>	</li>
 						</c:if>
 
 					</ul>

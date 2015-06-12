@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import it.uniroma3.model.Address;
@@ -16,7 +17,6 @@ import it.uniroma3.model.Order;
 @SessionScoped
 public class CustomerController{
 
-	
 	private Long id;
 	
 	private String firstname;
@@ -28,6 +28,7 @@ public class CustomerController{
 	private Date registerdata;
 	private Customer customer;
 	private Address address;
+	private Order order;
 	private List<Order> orders;
 	private List<Customer> customers;
 	
@@ -49,6 +50,8 @@ public class CustomerController{
 		Customer customer = customerFacade.getCustomer(id);
 		return "customer";
 	}
+	
+	
 
 	public Long getId() {
 		return id;
@@ -151,6 +154,7 @@ public class CustomerController{
 	public String loginCustomer(){
 		try{
 		this.customer = customerFacade.getCustomer(email, password);
+		this.id = this.customer.getId();
 		return "customer";
 		}catch(Exception e){
 			return "login";
@@ -164,13 +168,37 @@ public class CustomerController{
 	}
 	
 	public String listOrders(){
-		this.orders=this.customer.getOrders();
+		this.orders=customerFacade.getAllOrders();
 		return "orders";
 	}
-
-
-
-
 	
+	public String createOrder(){
+		this.order = customerFacade.create(new Date(), this.customer);
+		this.customer.getOrders().add(this.order);
+		return this.listOrders();
+	}
 
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+		
+	public String closedOrder(){
+		try{
+		this.order = customerFacade.getOrder(id);
+		if(order.getClosingDate()!=null){
+			return this.listOrders();
+		}
+		else{
+		this.order.setClosingDate(new Date());
+		this.customerFacade.updateOrder(this.order);
+		this.customer.getOrders().add(this.order);}
+		return this.listOrders();}
+		catch (Exception e){
+			return this.listOrders();
+		}
+	}
 }

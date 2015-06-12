@@ -1,12 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=US-ASCII"
-	pageEncoding="US-ASCII"%>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
-<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="f"  uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h"  uri="http://java.sun.com/jsf/html"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -19,17 +18,8 @@
 <!-- Custom styles for this template -->
 <link href="resources/css/custom.css" rel="stylesheet">
 
-<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
-
 <body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
@@ -46,33 +36,52 @@
 			<div id="navbar" class="collapse navbar-collapse">
 				<f:view>
 					<ul class="nav navbar-nav">
-						<li class="active"><a
-							href='<c:url value="/faces/index.jsp" />'>Home</a></li>
-						<li><h:form>
+						<li><a href='<c:url value="/faces/index.jsp" />'>Home</a></li>
+						<li><h:form >
 								<h:commandLink styleClass="c-link"
 									action="#{productController.listProducts}"
 									value="List all Products" />
 							</h:form></li>
 						<c:if test="${customerController.customer.email == null}">
-							<li><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
+							<li class="active"><a href='<c:url value="/faces/login.jsp" />'>Login</a></li>
 						</c:if>
 						<c:if test="${customerController.customer.email != null}">
-							<li><a href='<c:url value="/faces/customer.jsp" />'>${customerController.customer.firstname}</a></li>
-							<li><h:form>
-								<h:commandLink styleClass="c-link" value="New Order"
-									action="#{customerController.createOrder}">
-								</h:commandLink>
-							</h:form></li>
+							<li class="active"><a href='<c:url value="/faces/customer.jsp" />'>${customerController.customer.firstname}</a></li>
+							<li><a href='<c:url value="/faces/newOrder.jsp" />'> New Order</a></li>
 						</c:if>
 					</ul>
-				</f:view>
 			</div>
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
 	<br />
 	<br />
-	<img src="resources/images/index-img.gif" width="100%">
+	<div class="container">
+		<h:form>
+			<table class="table-order" width="100%" border="1">
+			  <tr>
+			    <th class="th-orders"colspan="4" scope="col">Order Lines</th>
+		      </tr>
+              <tr>
+              <td class="td-attribute">ID</td>
+              <td class="td-attribute">Quantity</td>
+              <td class="td-attribute">Unit Price (€)</td>
+              <td class="td-attribute">Name Product</td>
+              </tr>
+			  <tr>
+			    <td class="td-value">${orderLineController.orderLine.id}</td>
+			    <td class="td-value">${orderLineController.orderLine.quantity}</td>
+			    <td class="td-value">${orderLineController.orderLine.unitPrice}</td>
+			    <td class="td-value">${orderLineController.orderLine.product.name}</td>
+		      </tr>
+		  </table>
+		  <h:commandButton  action="#{orderController.listProducts}" value="Add Product" />
+		<h:commandButton value="Fine"  action="#{orderController.closingOrder}">
+		<f:param name="id" value="#{customerController.id }"/>
+		</h:commandButton>
+		</h:form>
+		</f:view>
+	</div>
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
@@ -83,4 +92,3 @@
 	<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
-

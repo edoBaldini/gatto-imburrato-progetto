@@ -21,7 +21,7 @@
 
 <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 </head>
-<body >
+<body>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -50,7 +50,11 @@
 					<c:if test="${customerController.customer.email != null}">
 						<li class="active"><a
 							href='<c:url value="/faces/customer.jsp" />'>${customerController.customer.firstname}</a></li>
-						<li><a href='<c:url value="/faces/newOrder.jsp" />'> New Order</a></li>
+						<li><h:form>
+							<h:commandLink styleClass="c-link" value="New Order"
+								action="#{customerController.createOrder}">
+							</h:commandLink>
+						</h:form></li>
 					</c:if>
 				</ul>
 		</div>
@@ -61,36 +65,38 @@
 	<br />
 	<div class="container">
 		<h:form>
-			<center><table class="table-order" border="1">
-			  <tr>
-			    <th class="th-orders" colspan="4" scope="col">Orders</th>
-		      </tr>
-			  <tr>
-			    <td>&nbsp;</td>
-			    <td class="td-time">Created</td>
-			    <td class="td-time">Closed</td>
-			    <td class="td-time">Processed</td>
-		      </tr>
-			  <tr>
-			    <td class="td-time">ID</td>
-			    <td class="td-attribute">Creation Time</td>
-			    <td class="td-attribute">Closing Date</td>
-			    <td class="td-attribute">Processing Date</td>
-		      </tr>
-		      <c:forEach var="order" items="#{customerController.orders}">
-		      <tr>
-		      <td class="td-value"><h:commandLink action="#{orderController.findOrder}"
-									value="#{order.id }">
+			<center>
+				<table class="table-order" border="1">
+					<tr>
+						<th class="th-orders" colspan="4" scope="col">Orders</th>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td class="td-time">Created</td>
+						<td class="td-time">Closed</td>
+						<td class="td-time">Processed</td>
+					</tr>
+					<tr>
+						<td class="td-time">ID</td>
+						<td class="td-attribute">Creation Time</td>
+						<td class="td-attribute">Closing Date</td>
+						<td class="td-attribute">Processing Date</td>
+					</tr>
+					<c:forEach var="order" items="#{customerController.orders}">
+						<tr>
+							<td class="td-value"><h:commandLink
+									action="#{orderController.findOrder}" value="#{order.id }">
 									<f:param name="id" value="#{order.id}" />
 								</h:commandLink></td>
 							<td class="td-value">${order.creationTime }</td>
 							<td class="td-value">${order.closingDate }</td>
-							<td class="td-value">${order.closingDate }</td>
-		      </tr>
-		      </c:forEach>
-		      
-		  </table></center>
-      </h:form>
+							<td class="td-value">${order.processingDate }</td>
+						</tr>
+					</c:forEach>
+
+				</table>
+			</center>
+		</h:form>
 
 		</f:view>
 	</div>

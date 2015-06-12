@@ -62,4 +62,27 @@ public class CustomerFacade {
 		em.remove(customer);
 	}
 
+	public Order create(Date creationTime, Customer customer) {
+		Order order = new Order(creationTime, customer);
+		em.persist(order);
+		return order;
+	}
+	
+	public void updateOrder(Order order){
+		em.merge(order);
+	}
+	
+	public Order getOrder(Long id){
+		Order order = em.find(Order.class, id);
+		return order;
+	}
+	
+	public List<Order> getAllOrders(){
+		CriteriaQuery<Order> cq = em.getCriteriaBuilder().createQuery(Order.class);
+		cq.select(cq.from(Order.class));
+		List<Order> orders = em.createQuery(cq).getResultList();
+		return orders;
+	}
+
+
 }
