@@ -43,7 +43,7 @@
 					</div>
 				</nav>
 				<div class="modal-header">
-					<h1 class="text-center">List Products ${orderController.order.id }</h1>
+					<h1 class="text-center">List Products  Order:${orderController.order.id }</h1>
 				</div>
 				<div class="modal-body">
 					<h2>Products</h2>
@@ -60,7 +60,7 @@
 											<th>Name</th>
 											<th>Price</th>
 										</tr>
-										<c:forEach var="product" items="#{productController.products}">
+										<c:forEach var="product" items="#{orderController.products}">
 											<tr>
 												<td>${product.id }</td>
 												<td>${product.name}</td>
@@ -68,28 +68,25 @@
 											</tr>
 										</c:forEach>
 									</table>
+									</div>
 									<div class="modal-footer">
-										<div class="col-md-12">
-											ID:
+										<div class="form-group">
+											ID PRODUCT:
 											<h:inputText value="#{orderLineController.id}"
 												required="true" requiredMessage="id is mandatory" id="id" />
 											<h:message for="id" />
 										</div>
-										<div>
+										<div class="form-group">
 											Quantity:
 											<h:inputText value="#{orderLineController.quantity}"
 												required="true" requiredMessage="quantity is mandatory"
 												id="quantity" />
 											<h:message for="quantity" />
 										</div>
-										<div>
-											to confirm insert Id order:
-											<h:inputText value="#{orderLineController.idOrder}"
-													required="true" requiredMessage="idOrder is mandatory"
-													id="idOrder" />
-													<h:message for="idOrder" />
+										<div class="form-group">
 											<h:commandButton value="Submit"
 												action="#{orderLineController.createOrderLine}" >
+											<f:param name="idOrder" value="#{orderController.id }" />
 											</h:commandButton>
 										</div>
 
@@ -102,7 +99,6 @@
 				</div>
 			</div>
 		</div>
-	</div>
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->

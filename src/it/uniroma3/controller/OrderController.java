@@ -50,15 +50,15 @@ public class OrderController {
 
 
 	public String listOrders(){
-		this.orders = orderFacade.getAllOrders();
+		this.orders = this.order.getCustomer().getOrders();
+		return "orders";
+	}
+	
+	public String listOrders(Long id){
+		this.orders = this.order.getCustomer().getOrders();
 		return "orders";
 	}
 
-	public String listOrders(Long id){
-		this.orders = orderFacade.getAllOrders(id);
-		this.id=id;
-		return "orders";
-	}
 
 	public String findOrder(){
 		this.order = orderFacade.getOrder(id);
@@ -72,9 +72,16 @@ public class OrderController {
 		return "orderLines";
 	}
 
-	public String listProducts(){
+	public String listProductsOrder(){
+		this.order = orderFacade.getOrder(id);
 		this.products = orderFacade.getAllProducts();
-		return "newOrderLine";
+		return "newOrderLine"; 
+	}
+	
+	public String listProductsOrder(Long id){
+		this.order = orderFacade.getOrder(id);
+		this.products = orderFacade.getAllProducts();
+		return "newOrderLine"; 
 	}
 
 
@@ -160,9 +167,12 @@ public class OrderController {
 	
 	
 	public String closedOrder(){
+		this.order = orderFacade.getOrder(id);
 		this.order.setClosingDate(new Date());
 		this.orderFacade.updateOrder(this.order);
-		return "customer";
+		this.customer = this.order.getCustomer();
+		this.customer.getOrders().add(this.order);
+		return this.listOrders();
 	}
 	
 	public String retrievesClient(){

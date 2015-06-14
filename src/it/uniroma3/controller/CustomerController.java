@@ -182,7 +182,6 @@ public class CustomerController{
 	}
 
 	public String listOrders(){
-		this.orders=this.customer.getOrders();
 		return "orders";
 	}
 
@@ -200,7 +199,7 @@ public class CustomerController{
 		this.order = order;
 	}
 
-	public String closedOrder(){
+	/*public String closedOrder(){
 		try{
 			this.order = customerFacade.getOrder(id);
 			if(order.getClosingDate()!=null){
@@ -214,5 +213,5 @@ public class CustomerController{
 		catch (Exception e){
 			return this.listOrders();
 		}
-	}
+	}*/
 }

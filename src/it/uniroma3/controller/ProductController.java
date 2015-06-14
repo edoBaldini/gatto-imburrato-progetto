@@ -37,11 +37,6 @@ public class ProductController {
 		return "products"; 
 	}
 	
-	public String listProductsOrder() {
-		this.products = productFacade.getAllProducts();
-		return "newOrderLine"; 
-	}
-
 	public String findProduct() {
 		this.product = productFacade.getProduct(id);
 		this.providers = this.product.getProviders(); 

@@ -89,16 +89,17 @@
 				</c:forEach>
 			</table>
 			<c:if test="${orderController.order.closingDate == null }">
-				<h:commandButton action="#{productController.listProductsOrder}"
-					value="Add Product" />
+				<h:commandButton action="#{orderController.listProductsOrder}"
+					value="Add Product" >
+					<f:param name="id" value = "#{orderController.order.id }" />
+					</h:commandButton>
 			
-				to closing insert Id order:
-				<h:inputText value="#{customerController.id}"
-					required="true" requiredMessage="id is mandatory"
-					id="id" />
-				<h:message for="id" />
-				<h:commandButton value="Closing"
-					action="#{customerController.closedOrder}" />
+				
+					
+				<h:commandButton value="Closing " action ="#{orderController.closedOrder }" >
+					<f:param name="id" value="#{orderController.order.id }" />
+				</h:commandButton>
+				
 	</c:if>
 		</h:form>
 		</f:view>

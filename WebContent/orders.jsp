@@ -86,14 +86,22 @@
 						<td class="td-attribute">Closing Date</td>
 						<td class="td-attribute">Processing Date</td>
 					</tr>
-					<c:forEach var="order" items="#{customerController.orders}">
+					<c:forEach var="order" items="#{customerController.customer.orders}">
 						<tr>
 							<td class="td-value"><h:commandLink
 									action="#{orderController.findOrder}" value="#{order.id }">
 									<f:param name="id" value="#{order.id}" />
 								</h:commandLink></td>
 							<td class="td-value">${order.creationTime }</td>
-							<td class="td-value">${order.closingDate }</td>
+							<td class="td-value"><c:choose>
+													<c:when test ="${order.closingDate == null}">
+													 	${orderController.order.closingDate }
+													</c:when>
+													<c:otherwise> 
+														${order.closingDate}
+													</c:otherwise>
+												</c:choose>
+												</td>
 							<td class="td-value">${order.processingDate }</td>
 						</tr>
 					</c:forEach>

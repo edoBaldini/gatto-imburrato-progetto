@@ -28,6 +28,8 @@ public class OrderFacade {
 		Order order = em.find(Order.class, id);
 		return order;
 	}
+	
+
 
 
 	public List<Order> getAllOrders() {
