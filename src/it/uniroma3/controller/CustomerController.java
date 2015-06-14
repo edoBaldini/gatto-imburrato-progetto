@@ -215,10 +215,4 @@ public class CustomerController{
 			return this.listOrders();
 		}
 	}
-	
-	public String retrievesClient (){
-		this.order = customerFacade.getOrder(id);
-		this.customer = this.order.getCustomer();
-		return "customer";
-	}
 }

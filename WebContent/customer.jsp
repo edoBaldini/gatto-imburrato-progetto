@@ -105,11 +105,13 @@
             <div class="from-group">
 			<h:commandLink action="#{customerController.listOrders}" value="List all Orders" />
 			
-			
+			<c:if test="${customerController.email == '@administrator.it'}">
+			<br><br>
 			<h:inputText value="#{orderController.id}"
 					id="id" />
 				<h:commandButton value="Retrieves"
 					action="#{orderController.retrievesClient}" />
+					</c:if>
 			</div>
 			<br><br>
 			<div class="form-group">
