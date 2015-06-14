@@ -182,7 +182,7 @@ public class CustomerController{
 	}
 
 	public String listOrders(){
-		this.orders=customerFacade.getAllOrders();
+		this.orders=this.customer.getOrders();
 		return "orders";
 	}
 
