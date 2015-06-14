@@ -18,7 +18,7 @@ import it.uniroma3.model.Order;
 public class CustomerController{
 
 	private Long id;
-	
+
 	private String firstname;
 	private String lastname;
 	private String email;
@@ -31,27 +31,27 @@ public class CustomerController{
 	private Order order;
 	private List<Order> orders;
 	private List<Customer> customers;
-	
+
 	@EJB
 	private CustomerFacade customerFacade;
-	
+
 	public String createCustomer(){
 		this.customer = customerFacade.createCustomer(firstname,lastname,email,phonenumber,dateofbirth,
 				registerdata,password);
 		return "customer";
 	}
-	
+
 	public String listCustomers(){
 		this.customers = customerFacade.getAllCustomers();
 		return "customers";
 	}
-	
+
 	public String findCustomer(Long id){
 		Customer customer = customerFacade.getCustomer(id);
 		return "customer";
 	}
-	
-	
+
+
 
 	public Long getId() {
 		return id;
@@ -108,7 +108,7 @@ public class CustomerController{
 	public void setRegisterdata(Date registerdata) {
 		this.registerdata = registerdata;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
@@ -116,15 +116,15 @@ public class CustomerController{
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public Customer getCustomer(){
 		return customer;
 	}
-	
+
 	public void setCustomer(Customer customer){
 		this.customer = customer;
 	}
-	
+
 	public Address getAddress() {
 		return address;
 	}
@@ -140,8 +140,8 @@ public class CustomerController{
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
-	
-	
+
+
 	public List<Customer> getCustomers() {
 		return customers;
 	}
@@ -150,28 +150,42 @@ public class CustomerController{
 		this.customers = customers;
 	}
 
-	
+
 	public String loginCustomer(){
 		try{
-		this.customer = customerFacade.getCustomer(email, password);
-		this.id = this.customer.getId();
-		return "customer";
+			this.customer = customerFacade.getCustomer(email, password);
+			this.id = this.customer.getId();
+			this.email = this.loginAdministrator(email);
+			return "customer";
 		}catch(Exception e){
 			return "login";
 		}
-		
+
 	}
 	
+	public String loginAdministrator(String email){
+		try{
+			String administratorEmail;
+			administratorEmail = email.substring(email.length()-17,email.length());
+			if (administratorEmail.equals("@administrator.it"))
+				return administratorEmail;
+			else return email;
+		}
+		catch (Exception e){
+			return email;
+		}
+	}
+
 	public String logoutCustomer(){
 		this.customer = null;
 		return "login";
 	}
-	
+
 	public String listOrders(){
 		this.orders=customerFacade.getAllOrders();
 		return "orders";
 	}
-	
+
 	public String createOrder(){
 		this.order = customerFacade.create(new Date(), this.customer);
 		this.customer.getOrders().add(this.order);
@@ -185,20 +199,26 @@ public class CustomerController{
 	public void setOrder(Order order) {
 		this.order = order;
 	}
-		
+
 	public String closedOrder(){
 		try{
-		this.order = customerFacade.getOrder(id);
-		if(order.getClosingDate()!=null){
-			return this.listOrders();
-		}
-		else{
-		this.order.setClosingDate(new Date());
-		this.customerFacade.updateOrder(this.order);
-		this.customer.getOrders().add(this.order);}
-		return this.listOrders();}
+			this.order = customerFacade.getOrder(id);
+			if(order.getClosingDate()!=null){
+				return this.listOrders();
+			}
+			else{
+				this.order.setClosingDate(new Date());
+				this.customerFacade.updateOrder(this.order);
+				this.customer.getOrders().add(this.order);}
+				return this.listOrders();}
 		catch (Exception e){
 			return this.listOrders();
 		}
+	}
+	
+	public String retrievesClient (){
+		this.order = customerFacade.getOrder(id);
+		this.customer = this.order.getCustomer();
+		return "customer";
 	}
 }

@@ -164,5 +164,10 @@ public class OrderController {
 		this.orderFacade.updateOrder(this.order);
 		return "customer";
 	}
-
+	
+	public String retrievesClient(){
+		this.order = orderFacade.getOrder(id);
+		this.customer = this.order.getCustomer();
+		return "retrievesClient";
+	}
 }

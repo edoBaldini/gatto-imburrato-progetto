@@ -58,6 +58,7 @@
 									action="#{customerController.createOrder}">
 								</h:commandLink>
 							</h:form></li>
+							
 						</c:if>
 
 					</ul>

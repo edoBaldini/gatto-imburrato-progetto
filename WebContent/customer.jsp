@@ -63,6 +63,10 @@
 								</h:commandLink>
 							</h:form>	</li>
 						</c:if>
+						<c:if test="${customerController.email == '@administrator.it'}">
+							<li ><a
+								href='<c:url value="/faces/newProduct.jsp" />'>New Product</a></li>
+						</c:if>
 
 					</ul>
 			</div>
@@ -70,6 +74,7 @@
 		</div>
 	</nav>
 	<div class="container ">
+	
 		<h:form>
 			<br />
 			<br />
@@ -99,6 +104,12 @@
             </div>
             <div class="from-group">
 			<h:commandLink action="#{customerController.listOrders}" value="List all Orders" />
+			
+			
+			<h:inputText value="#{orderController.id}"
+					id="id" />
+				<h:commandButton value="Retrieves"
+					action="#{orderController.retrievesClient}" />
 			</div>
 			<br><br>
 			<div class="form-group">

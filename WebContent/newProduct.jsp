@@ -55,6 +55,10 @@
 						<c:if test="${customerController.customer.email != null}">
 							<li><a href='<c:url value="/faces/customer.jsp" />'>${customerController.customer.firstname}</a></li>
 						</c:if>
+						<c:if test="${customerController.email == '@administrator.it'}">
+							<li class="active"><a
+								href='<c:url value="/faces/newProduct.jsp" />'>New Product</a></li>
+						</c:if>
 					</ul>
 			</div>
 			<!--/.nav-collapse -->
