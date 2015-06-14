@@ -12,7 +12,6 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
 
 @ManagedBean
 public class OrderController {
@@ -50,7 +49,7 @@ public class OrderController {
 
 
 	public String listOrders(){
-		this.orders = this.order.getCustomer().getOrders();
+		this.orders = this.orderFacade.getOrders(this.order.getCustomer().getId());
 		return "orders";
 	}
 	
@@ -172,12 +171,30 @@ public class OrderController {
 		this.orderFacade.updateOrder(this.order);
 		this.customer = this.order.getCustomer();
 		this.customer.getOrders().add(this.order);
-		return this.listOrders();
+		return "customer";
 	}
 	
 	public String retrievesClient(){
+		try{
 		this.order = orderFacade.getOrder(id);
 		this.customer = this.order.getCustomer();
-		return "retrievesClient";
+		return "retrievesClient";}
+		catch(Exception e){
+			return "customer";
+		}
+	}
+	
+	public String eliminaOrder(){
+		this.order = orderFacade.getOrder(id);
+		this.order.getCustomer().getOrders().remove(this.order);
+		orderFacade.deleteOrder(this.order);
+		return listOrders();
+	}
+	
+	public String eliminaOrder(Long id){
+		this.order = orderFacade.getOrder(id);
+		this.order.getCustomer().getOrders().remove(this.order);
+		orderFacade.deleteOrder(order);
+		return listOrders();
 	}
 }

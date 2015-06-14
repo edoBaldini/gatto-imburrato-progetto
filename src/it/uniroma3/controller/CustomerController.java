@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 
 import it.uniroma3.model.Address;
@@ -182,6 +181,7 @@ public class CustomerController{
 	}
 
 	public String listOrders(){
+		this.orders = customerFacade.getOrders(this.customer.getId());
 		return "orders";
 	}
 
@@ -199,19 +199,10 @@ public class CustomerController{
 		this.order = order;
 	}
 
-	/*public String closedOrder(){
-		try{
-			this.order = customerFacade.getOrder(id);
-			if(order.getClosingDate()!=null){
-				return this.listOrders();
-			}
-			else{
-				this.order.setClosingDate(new Date());
-				this.customerFacade.updateOrder(this.order);
-				this.customer.getOrders().add(this.order);}
-				return this.listOrders();}
-		catch (Exception e){
-			return this.listOrders();
-		}
-	}*/
+	public String eliminaOrder(){
+		this.order = customerFacade.getOrder(id);
+		customerFacade.deleteOrder(this.order);
+		this.customer.getOrders().remove(this.order);
+		return this.listOrders();
+	}
 }

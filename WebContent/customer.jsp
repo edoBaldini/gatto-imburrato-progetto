@@ -109,7 +109,7 @@
 			<br><br>
 			<h:inputText value="#{orderController.id}"
 					id="id" />
-				<h:commandButton value="Retrieves"
+				<h:commandButton value="Retrieves Client"
 					action="#{orderController.retrievesClient}" />
 					</c:if>
 			</div>

@@ -69,11 +69,12 @@
 										</c:forEach>
 									</table>
 									</div>
-									<div class="modal-footer">
+									
 										<div class="form-group">
 											ID PRODUCT:
 											<h:inputText value="#{orderLineController.id}"
-												required="true" requiredMessage="id is mandatory" id="id" />
+												required="true" requiredMessage="id is mandatory" id="id" 
+												onfocus="if(this.value == '#{orderLineController.id}') {this.value= '';}" />
 											<h:message for="id" />
 										</div>
 										<div class="form-group">
@@ -98,7 +99,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->

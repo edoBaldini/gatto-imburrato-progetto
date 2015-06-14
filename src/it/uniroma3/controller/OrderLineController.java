@@ -37,7 +37,7 @@ public class OrderLineController {
 		this.unitPrice = this.product.getPrice(); 
 		this.orderLine = orderLineFacade.createOrderLine(unitPrice, quantity, product,this.order);
 		this.order.getOrderLines().add(this.orderLine);
-		return "customer";
+		return "orders";
 	}
 	
 	public String listOrderLines(){

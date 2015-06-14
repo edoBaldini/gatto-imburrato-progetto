@@ -44,7 +44,7 @@
 				</div>
 				</nav>
 				<div class="modal-header">
-					<h1 class="text-center">${productController.product.name}</h1>
+					<h1 class="text-center">Product: ${productController.product.name}</h1>
 					<h2>Details</h2>
 				</div>
 				<div class="modal-body">

@@ -1,5 +1,6 @@
 package it.uniroma3.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -84,5 +85,17 @@ public class CustomerFacade {
 		return orders;
 	}
 
+	public void deleteOrder(Order order){
+		em.remove(em.merge(order));
+	}
+	
+	public List<Order> getOrders(Long id){
+		List<Order> orders = new ArrayList<Order>();
+		for (Order order: this.getAllOrders()){
+			if (order.getCustomer().getId().equals(id) )
+					orders.add(order);
+		}
+		return orders;
+	}
 
 }

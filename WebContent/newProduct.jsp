@@ -41,9 +41,6 @@
 				<f:view>
 					<ul class="nav navbar-nav">
 						<li><a href='<c:url value="/faces/index.jsp" />'>Home</a></li>
-						<li class="active"><a
-							href='<c:url value="/faces/newProduct.jsp" />'>Insert a new
-								product</a></li>
 						<li><h:form>
 								<h:commandLink styleClass="c-link"
 									action="#{productController.listProducts}"
@@ -54,7 +51,12 @@
 						</c:if>
 						<c:if test="${customerController.customer.email != null}">
 							<li><a href='<c:url value="/faces/customer.jsp" />'>${customerController.customer.firstname}</a></li>
+							<li><h:form>
+								<h:commandLink styleClass="c-link" value="New Order"  action="#{customerController.createOrder}">
+								</h:commandLink>
+							</h:form>	</li>
 						</c:if>
+						
 						<c:if test="${customerController.email == '@administrator.it'}">
 							<li class="active"><a
 								href='<c:url value="/faces/newProduct.jsp" />'>New Product</a></li>
@@ -64,47 +66,47 @@
 			<!--/.nav-collapse -->
 		</div>
 	</nav>
-	<br />
-	<br />
-	<br />
-	<br />
 	<div class="container">
-
-		<h:form>
-			<div>
+	<br />
+	<br />
+	<br />
+	<br />
+		<h:form styleClass="form col-md-12 center-block">
+			<div class="form-group">
 				Name:
 				<h:inputText value="#{productController.name}" required="true"
 					requiredMessage="Name is mandatory" id="name" />
 				<h:message for="name" />
 			</div>
-			<div>
+			<div class="form-group">
 				Code:
 				<h:inputText value="#{productController.code}" required="true"
 					requiredMessage="Code is mandatory" id="code" />
 				<h:message for="code" />
 			</div>
-			<div>
+			<div class="form-group">
 				Price:
 				<h:inputText value="#{productController.price}" required="true"
 					requiredMessage="Price is mandatory"
 					converterMessage="Price must be a number" id="price" />
 				<h:message for="price" />
 			</div>
-			<div>
+			<div class="form-group">
 				Description:
 				<h:inputTextarea value="#{productController.description}"
 					required="false" cols="20" rows="5" />
 
 			</div>
-			<div>
+			<div class="form-group">
 				<h:commandButton value="Submit"
 					action="#{productController.createProduct}" />
 			</div>
 			<h:commandLink action="#{productController.listProducts}"
 				value="List all Products" />
 		</h:form>
-		</f:view>
 	</div>
+
+	</f:view>
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->

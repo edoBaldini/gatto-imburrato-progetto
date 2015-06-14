@@ -1,5 +1,6 @@
 package it.uniroma3.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,20 +30,18 @@ public class OrderFacade {
 		return order;
 	}
 	
-
-
-
 	public List<Order> getAllOrders() {
 		CriteriaQuery<Order> cq = em.getCriteriaBuilder().createQuery(Order.class);
 		cq.select(cq.from(Order.class));
 		List<Order> orders = em.createQuery(cq).getResultList();
 		return orders;
 	}
-	
-	public List<Order> getAllOrders(Long id){
-		TypedQuery<Order> o=em.createNamedQuery("all-orders-customer",Order.class);
-		o.setParameter("id", id);
-		List<Order> orders= o.getResultList();
+
+	public List<Order> getOrders(Long id){
+		List<Order> orders = new ArrayList<Order>();
+		for(Order order: this.getAllOrders())
+			if (order.getCustomer().getId().equals(id))
+				orders.add(order);
 		return orders;
 	}
 	
@@ -51,15 +50,14 @@ public class OrderFacade {
 	}
 	
 	public void deleteOrder(Order order){
-		em.remove(order);
+		em.remove(em.merge(order));
 	}
 	
 	public void deleteOrder(Long id){
         Order order = em.find(Order.class, id);
-        deleteOrder(order);
+        em.remove(order);
+        
 	}
-	
-	
 	public Customer getCustomer(Long id){
 		Customer customer = em.find(Customer.class, id);
 		return customer;

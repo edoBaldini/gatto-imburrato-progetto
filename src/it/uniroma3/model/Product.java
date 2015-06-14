@@ -35,7 +35,7 @@ import javax.persistence.Column;
 	
 	public Product() {
     }
-
+	
 	public Product(String name, Float price, String description, String code, Integer quantity) {
         this.name = name;
         this.quantity = quantity;

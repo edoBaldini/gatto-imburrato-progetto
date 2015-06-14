@@ -100,7 +100,15 @@
 					<f:param name="id" value="#{orderController.order.id }" />
 				</h:commandButton>
 				
+				
+				
+				
 	</c:if>
+	 insert id order for delete:
+				<h:inputText value="#{customerController.id}"
+					required="true" requiredMessage="id is mandatory" id="id"/>
+				<h:message for="id" />
+				<h:commandButton value="Delete " action ="#{customerController.eliminaOrder }" />
 		</h:form>
 		</f:view>
 	</div>
