@@ -85,7 +85,7 @@ import javax.persistence.Column;
 	
     public boolean equals(Object obj) {
         Product product = (Product)obj;
-        return this.getCode().equals(product.getCode());
+        return this.code.equals(product.getCode());
     }
 
     public int hashCode() {

@@ -69,7 +69,7 @@ public class OrderLine {
 
 	public boolean equals(Object obj){
 		OrderLine orderLine= (OrderLine)obj;
-		return this.getQuantity()==orderLine.getQuantity() && this.getUnitPrice()==orderLine.getUnitPrice();
+		return this.quantity==orderLine.getQuantity() && this.unitPrice==orderLine.getUnitPrice();
 	}
 	
 	public Order getOrder() {

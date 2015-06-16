@@ -10,10 +10,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaQuery;
 
-
-
-
-
 @Stateless()
 public class CustomerFacade {
 	

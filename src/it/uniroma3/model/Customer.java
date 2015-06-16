@@ -116,9 +116,15 @@ public class Customer {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public boolean equals(Object obj){
+		Customer customer = (Customer) obj;
+		return this.firstname.equals(customer.getFirstname()) && this.lastname.equals(customer.getLastname())
+				&& this.email.equals(customer.getEmail());
+	}
 
 	public int hashCode() {
-		return this.firstname.hashCode() + this.lastname.hashCode() + this.address.hashCode(); 
+		return this.firstname.hashCode() + this.lastname.hashCode()+ this.email.hashCode(); 
 	}
 	
 	public List<Order> getOrders() {

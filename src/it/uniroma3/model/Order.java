@@ -80,7 +80,7 @@ public class Order {
 	
 	public boolean equals(Object obj){
 		Order order=(Order)obj;
-		return order.getCreationTime().equals(order.getCreationTime());
+		return this.creationTime.equals(order.getCreationTime());
 	}
 	
 	public int hashCode(){
