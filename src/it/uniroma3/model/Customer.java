@@ -123,9 +123,9 @@ public class Customer {
 				this.lastname.equals(customer.getLastname()) &&
 				this.email.equals(customer.getEmail());
 	}
-	
+
 	public int hashCode() {
-		return this.firstname.hashCode() + this.lastname.hashCode() +this.email.hashCode(); 
+		return this.firstname.hashCode() + this.lastname.hashCode()+ this.email.hashCode(); 
 	}
 	
 	public List<Order> getOrders() {

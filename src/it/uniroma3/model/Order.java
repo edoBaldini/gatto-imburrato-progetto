@@ -30,9 +30,7 @@ public class Order {
 	@Column (nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date creationTime;
-	@Temporal(TemporalType.DATE)
 	private Date closingDate;
-	@Temporal(TemporalType.DATE)
 	private Date processingDate;
 	
 	@ManyToOne
@@ -82,7 +80,7 @@ public class Order {
 	
 	public boolean equals(Object obj){
 		Order order=(Order)obj;
-		return order.getCreationTime().equals(order.getCreationTime());
+		return this.creationTime.equals(order.getCreationTime());
 	}
 	
 	public int hashCode(){
