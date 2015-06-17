@@ -60,8 +60,6 @@
 						<c:if test="${customerController.customer.email == '@administrator.it'}">
 							<li class="active"><a
 								href='<c:url value="/faces/newProduct.jsp" />'>New Product</a></li>
-								<li class="active"><a
-								href='<c:url value="/faces/newCustomer.jsp" />'>New Customer</a></li>
 						</c:if>
 					</ul>
 			</div>

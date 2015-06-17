@@ -1,7 +1,11 @@
 package it.uniroma3.controller;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -23,6 +27,7 @@ public class CustomerController{
 	private String email;
 	private String password;
 	private String phonenumber;
+	private String sdateofbirth;
 	private Date dateofbirth;
 	private Date registerdata;
 	private Customer customer;
@@ -35,14 +40,14 @@ public class CustomerController{
 	@EJB
 	private CustomerFacade customerFacade;
 
-	public String createCustomer(){
-		this.customer = customerFacade.createCustomer(firstname,lastname,email,phonenumber,dateofbirth,
+	public String createCustomer() throws ParseException{
+		this.customer = customerFacade.createCustomer(firstname,lastname,email,phonenumber,creaData(),
 				new Date(),password);
 		return "customer";
 	}
 	
-	public String createNewCustomer() {
-		this.newCustomer = customerFacade.createCustomer(firstname, lastname, email, phonenumber, dateofbirth, 
+	public String createNewCustomer() throws ParseException {
+		this.newCustomer = customerFacade.createCustomer(firstname, lastname, email, phonenumber, creaData(), 
 				new Date(), password);
 		return "registeredCustomer";
 	}
@@ -220,4 +225,19 @@ public class CustomerController{
 		this.customer.getOrders().remove(this.order);
 		return this.listOrders();
 	}
+	
+	public String getSdateofbirth() {
+		return sdateofbirth;
+	}
+
+	public void setSdateofbirth(String sdateofbirth) {
+		this.sdateofbirth = sdateofbirth;
+	}
+	
+	
+	public Date creaData() throws ParseException{
+		DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+		return dateofbirth = format.parse(this.sdateofbirth);
+	}
+
 }

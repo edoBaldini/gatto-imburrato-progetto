@@ -60,8 +60,7 @@
 						<c:if test="${customerController.customer.email == '@administrator.it'}">
 							<li class="active"><a
 								href='<c:url value="/faces/newProduct.jsp" />'>New Product</a></li>
-								<li class="active"><a
-								href='<c:url value="/faces/newCustomer.jsp" />'>New Customer</a></li>
+								
 						</c:if>
 					</ul>
 			</div>
@@ -103,6 +102,14 @@
 				<h:inputText value="#{customerController.phonenumber}" required="true"
 					requiredMessage="Phone number is mandatory" id="phonenumber" />
 				<h:message for="phonenumber" />
+				
+			</div>
+			<div class="form-group">
+				Date of birth (format: "January 10, 1993"):
+				<h:inputText value="#{customerController.sdateofbirth}" required="true"
+					requiredMessage="Date is mandatory" id="date" />
+				<h:message for="date" />
+				
 			</div>
 			<div class="form-group">
 				 <h:commandButton value="Submit"

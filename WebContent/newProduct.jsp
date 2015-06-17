@@ -57,7 +57,7 @@
 							</h:form>	</li>
 						</c:if>
 						
-						<c:if test="${customerController.email == '@administrator.it'}">
+						<c:if test="${customerController.customer.email == '@administrator.it'}">
 							<li class="active"><a
 								href='<c:url value="/faces/newProduct.jsp" />'>New Product</a></li>
 						</c:if>
