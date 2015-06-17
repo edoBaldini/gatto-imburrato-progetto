@@ -1,0 +1,63 @@
+Caso d’uso UC1: consultazione listino - Attore primario: Cliente
+Scenario principale di successo: 
+1)	Un cliente vuole consultare i dettagli di un prodotto nel catalogo.
+2)	Il cliente chiede al sistema di visualizzare il catalogo prodotti. Il sistema mostra il catalogo.
+3)	Il cliente sceglie un prodotto. Il sistema mostra le informazioni relative a quel prodotto.
+Regole di dominio:
+-	Il cliente non può richiedere informazioni di un prodotto che non è in catalogo.
+
+Caso d’uso UC2 effettua ordine - Attore primario: cliente registrato
+Scenario principale di successo: Effettua ordine
+1)	Il cliente registrato inserisce email e password. Il sistema verifica la correttezza dei dati immessi e autentica il cliente.
+2)	Il cliente sceglie l’attività “crea ordine”. Il sistema crea un nuovo ordine assegnandogli id e data creazione e mostra al cliente la lista dei propri ordini.
+3)	Il cliente sceglie l’ordine in creazione da implementare, il sistema mostra i prodotti di quell’ordine.
+4)	Il cliente sceglie di aggiungere un nuovo prodotto, il sistema mostra la lista dei prodotti.
+5)	L’utente inserisce id del prodotto da inserire e la quantità.
+6)	Il sistema inserisce il prezzo unitario e registra la riga ordine
+— il cliente ripete i passi 3-4-5 fino a che non indica che ha terminato—
+7)	il cliente sceglie di chiudere l’ordine. Il sistema registra l’ordine come chiuso.
+Estensione 7-a il cliente può scegliere non chiudere subito l’ordine ma di farlo più avanti.
+Estensione 7-b il cliente può scegliere di eliminare l’ordine creato.
+Vincoli: una volta chiuso l’ordine non si potranno aggiungere nuovi prodotti.
+
+Caso d’uso UC3: consultazione ordini - Attore primario: Cliente registrato
+Scenario principale di successo: Consulta ordini
+1)	il cliente registrato inserisce email e password. Il sistema verifica la correttezza dei dato immessi e autentica il cliente.
+2)	Il cliente chiede al sistema di visualizzare i propri ordini. Il sistema mostra l’elenco al cliente
+3)	Il cliente sceglie un ordine. Il sistema mostra le informazioni relative a quell’ordine.
+
+Caso d’uso UC4: inserimento prodotti nel catalogo - Attore primario: Amministratore
+Scenario principale di successo: inserisci prodotto nel catalogo
+1)	l’amministratore inserisce email e password. Il sistema verifica la correttezza dei dati immessi e autentica l’amministratore.
+2)	L’amministratore sceglie l’attività “inserisci prodotto in catalogo”.
+3)	L’amministratore crea un nuovo prodotto specificandone i dati .
+4)	L’amministratore conferma il nuovo prodotto, il sistema verifica la correttezza dei dati immessi per il prodotto e lo inserisce nel catalogo.
+Regole di dominio:
+-	L’amministratore viene riconosciuto dal sistema per la sua mail che ha come dominio @administrator.it
+
+
+
+
+
+
+
+
+Caso d’uso UC5: recupera indirizzo cliente - Attore primario: Amministratore
+Scenario principale di successo: Recupera indirizzo cliente
+1)	l’amministratore inserisce email e password. Il sistema verifica la correttezza dei dati immessi e autentica l’amministratore.
+2)	L’amministratore sceglie l’attività “recupera cliente” fornendo l’id di un ordine.
+3)	Il sistema visualizza i dati del cliente che ha effettuato l’ordine.
+Regole di dominio:
+-	ogni ordine deve avere un cliente. Non ci possono essere ordini senza clienti.
+-	L’amministratore viene riconosciuto dal sistema per la sua mail che ha come dominio @administrator.it
+
+Caso d’uso UC6: crea nuovo cliente - Attore primario: Amministratore
+Scenario principale di successo: crea nuovo cliente
+1)	l’amministratore inserisce email e password. Il sistema verifica la correttezza dei dati immessi e autentica l’amministratore.
+2)	L’amministratore sceglie l’attività “new customer” .
+3)	L’amministratore inserisce i dati del nuovo cliente.
+4)	Il sistema registra il nuovo cliente e torna al profilo dell’amministratore.
+Regole di dominio:
+-	L’amministratore può abbandonare l’inserimento di un cliente in qualsiasi momento.
+-	L’indirizzo del cliente viene inserito dal cliente stesso.
+
