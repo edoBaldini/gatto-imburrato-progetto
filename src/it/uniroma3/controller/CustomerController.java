@@ -26,6 +26,7 @@ public class CustomerController{
 	private Date dateofbirth;
 	private Date registerdata;
 	private Customer customer;
+	private Customer newCustomer;
 	private Address address;
 	private Order order;
 	private List<Order> orders;
@@ -36,8 +37,14 @@ public class CustomerController{
 
 	public String createCustomer(){
 		this.customer = customerFacade.createCustomer(firstname,lastname,email,phonenumber,dateofbirth,
-				registerdata,password);
+				new Date(),password);
 		return "customer";
+	}
+	
+	public String createNewCustomer() {
+		this.newCustomer = customerFacade.createCustomer(firstname, lastname, email, phonenumber, dateofbirth, 
+				new Date(), password);
+		return "registeredCustomer";
 	}
 
 	public String listCustomers(){
@@ -123,6 +130,14 @@ public class CustomerController{
 	public void setCustomer(Customer customer){
 		this.customer = customer;
 	}
+	
+	public Customer getNewCustomer(){
+		return newCustomer;
+	}
+	
+	public void setNewCustomer(Customer newCustomer){
+		this.newCustomer = newCustomer;
+	}
 
 	public Address getAddress() {
 		return address;
@@ -157,7 +172,7 @@ public class CustomerController{
 			this.email = this.loginAdministrator(email);
 			return "customer";
 		}catch(Exception e){
-			return "login";
+		return "login";
 		}
 
 	}

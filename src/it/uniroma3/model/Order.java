@@ -30,7 +30,9 @@ public class Order {
 	@Column (nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date creationTime;
+	@Temporal(TemporalType.DATE)
 	private Date closingDate;
+	@Temporal(TemporalType.DATE)
 	private Date processingDate;
 	
 	@ManyToOne

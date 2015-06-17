@@ -66,6 +66,7 @@
 						<c:if test="${customerController.email == '@administrator.it'}">
 							<li ><a
 								href='<c:url value="/faces/newProduct.jsp" />'>New Product</a></li>
+							<li> <a href='<c:url value="/faces/newCustomer.jsp" />'>New Customer</a></li>
 						</c:if>
 
 					</ul>
@@ -97,12 +98,29 @@
 	<div class="container">
 		<h:form>
           <div class="form-group">
+          <c:choose>
+          	<c:when test="${customerController.customer.address != null }" >
               Address: <h:commandLink action="#{addressController.findAddress }" 
               						  value="#{customerController.customer.address.street}">
               				<f:param name="id" value="#{customerController.customer.address.id}" />
               		   </h:commandLink>
+            </c:when>
+            <c:otherwise>
+           	 <c:choose>
+            	<c:when test="${addressController.address.street == null}">
+            		<a href='<c:url value="/faces/newAddress.jsp" />'>Add address</a>
+            	</c:when>
+            	<c:otherwise>
+            		Address: <h:commandLink action="#{addressController.findAddress}"
+            					value="#{addressController.address.street}">
+            				<f:param name="id" value="#{addressController.address.id}"/>
+            				</h:commandLink>
+            	</c:otherwise>
+            	</c:choose>
+            </c:otherwise>
+            </c:choose>
             </div>
-            <div class="from-group">
+            <div class="form-group">
 			<h:commandLink action="#{customerController.listOrders}" value="List all Orders" />
 			
 			<c:if test="${customerController.email == '@administrator.it'}">

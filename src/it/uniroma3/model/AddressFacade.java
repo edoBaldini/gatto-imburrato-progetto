@@ -43,6 +43,13 @@ public class AddressFacade {
 		Address address = em.find(Address.class, id);
 		deleteAddress(address);
 	}
-
-
+	
+	public Customer getCustomer(Long id){
+		return em.find(Customer.class, id);
+	}
+	
+	public void updateCustomer(Customer customer){
+		em.merge(customer);
+	}
+	
 }

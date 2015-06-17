@@ -2,18 +2,24 @@ package it.uniroma3.controller;
 
 import it.uniroma3.model.Address;
 import it.uniroma3.model.AddressFacade;
+import it.uniroma3.model.Customer;
+
 import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
+
 
 @ManagedBean
-public class AddressController {
+public class AddressController{
 	
 	@ManagedProperty(value="#{param.id}")
 	private Long id;
 	
+	public Customer customer;
+
 	private String street;
 	private String city;
 	private String state;
@@ -21,7 +27,6 @@ public class AddressController {
 	private String country;
 	private Address address;
 	private List<Address> addresses;
-	
 	
 	@EJB
 	private AddressFacade addressFacade;
@@ -46,7 +51,23 @@ public class AddressController {
 		this.address = addressFacade.getAddress(id);
 		return "address";
 	}
-
+	
+	public String createAddressCustomer(){
+		this.address = addressFacade.createAddress( street,  city,  state,  zipcode,  country);
+		this.customer = addressFacade.getCustomer(id);
+		this.customer.setAddress(this.address);
+		addressFacade.updateCustomer(this.customer);
+		return "customer";
+	}
+	
+	public String createAddressCustomer(Long id){
+		this.address = addressFacade.createAddress( street,  city,  state,  zipcode,  country);
+		this.customer = addressFacade.getCustomer(id);
+		this.customer.setAddress(this.address);
+		addressFacade.updateCustomer(this.customer);
+		return "customer";
+	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -110,6 +131,19 @@ public class AddressController {
 	public void setAddresses(List<Address> addresses) {
 		this.addresses = addresses;
 	}
+	
+	//Metodo per recuperare l'ID dell'address correntemente salvato in sessione
+	public Long getAddressID(){
+		return this.address.getId();
+	}
+	
+	
+	public Customer getCustomer() {
+		return customer;
+	}
 
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 	
 }

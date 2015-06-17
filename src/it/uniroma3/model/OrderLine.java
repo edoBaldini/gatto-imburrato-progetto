@@ -28,6 +28,7 @@ public class OrderLine {
 	
 	@ManyToOne
 	@JoinColumn(name = "orders_id")
+	
 	private Order order;
 
 	public OrderLine(){}
